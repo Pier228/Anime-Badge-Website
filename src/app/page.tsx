@@ -1,9 +1,9 @@
-import styles from "./page.module.scss";
+import MainBadge from "@/components/MainBadge/MainBadge";
 
 export default function Home() {
     return (
         <>
-            <span>123</span>
+            <MainBadge />
         </>
     );
 }

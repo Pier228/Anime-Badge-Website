@@ -1,0 +1,12 @@
+@use "../globals.scss";
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.time_text_secondary {
+    color: globals.$secondary-text;
+    font-size: xx-large;
+}

@@ -1,0 +1,5 @@
+@use "globals";
+
+.text {
+    color: globals.$prime-text-light;
+}

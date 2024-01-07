@@ -1,0 +1,11 @@
+@use "../globals.scss";
+
+.container {
+    background-color: globals.$prime-bg;
+    padding: 1rem;
+    border-radius: 25px;
+    color: globals.$secondary-text-50;
+    font-weight: 900;
+    font-size: x-large;
+    width: 70%;
+}
