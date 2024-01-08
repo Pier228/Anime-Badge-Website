@@ -1,0 +1,14 @@
+@use "../globals.scss";
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    img {
+        fill: "#6809ae";
+    }
+}
+
+.internet_icon {
+    border: 2px solid globals.$prime-text-light;
+}
