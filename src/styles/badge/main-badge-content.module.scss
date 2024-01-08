@@ -1,0 +1,56 @@
+@use "../globals.scss";
+
+.container {
+    display: flex;
+    padding: 2rem 0rem;
+}
+
+.avatar {
+    position: relative;
+    margin-left: 1.2rem;
+}
+
+%corner {
+    position: absolute;
+}
+
+.corner_right_top {
+    @extend %corner;
+    top: -1rem;
+    right: -1rem;
+}
+
+.corner_left_top {
+    @extend %corner;
+    top: -1rem;
+    left: -1rem;
+    transform: rotate(-90deg);
+}
+
+.corner_left_bottom {
+    @extend %corner;
+    bottom: -1rem;
+    left: -1rem;
+    transform: rotate(180deg);
+}
+
+.corner_right_bottom {
+    @extend %corner;
+    bottom: -1rem;
+    right: -1rem;
+    transform: rotate(90deg);
+}
+
+.info_container {
+    margin-left: 2rem;
+
+    p {
+        margin-top: 1rem;
+    }
+
+    span {
+        color: globals.$prime-text-light;
+        font-weight: 600;
+        margin-left: 0.5rem;
+    }
+}

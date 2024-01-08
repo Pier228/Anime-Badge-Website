@@ -7,8 +7,8 @@ const Header = () => {
     return (
         <div className={styles.header}>
             <Clock />
-            <NickName name='Pier'/>
-            <QRCode/>  
+            <NickName name="Name" />
+            <QRCode />
         </div>
     );
 };

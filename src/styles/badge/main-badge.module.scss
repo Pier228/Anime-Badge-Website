@@ -2,10 +2,18 @@
 
 .container {
     background-color: globals.$prime-bg;
-    padding: 1rem;
+    padding: 1rem 2rem;
     border-radius: 25px;
     color: globals.$secondary-text-50;
     font-weight: 900;
     font-size: x-large;
-    width: 70%;
+    width: 50%;
+    position: relative;
+}
+
+.katana_img_top {
+    position: absolute;
+    top: -8rem;
+    left: 6rem;
+    transform: rotate(110deg) scale(1, -1);
 }
