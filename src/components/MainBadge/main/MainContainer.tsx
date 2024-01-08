@@ -4,7 +4,7 @@ import Information from "./Information";
 
 const MainContainer = () => {
     return (
-        <div className={styles.container}>
+        <main className={styles.container}>
             <Avatar />
             <Information
                 name="Monkey D. Luffy"
@@ -12,7 +12,7 @@ const MainContainer = () => {
                 birthday="May 5th"
                 occupation="Pirate Captain, Emperor, Senior Captain of the Grand Fleet, Prisoner (former), Chore Boy (temporary, former), Bandit (former)"
             />
-        </div>
+        </main>
     );
 };
 

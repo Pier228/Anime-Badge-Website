@@ -1,3 +1,4 @@
+import MainBadgeFooter from "./footer/MainBadgeFooter";
 import MainBadgeHeader from "./header/MainBadgeHeader";
 import MainContainer from "./main/MainContainer";
 import styles from "@/styles/badge/main-badge.module.scss";
@@ -14,7 +15,8 @@ const Main = () => {
                 className={styles.katana_img_top}
             />
             <MainBadgeHeader />
-            <MainContainer/>
+            <MainContainer />
+            <MainBadgeFooter />
         </div>
     );
 };

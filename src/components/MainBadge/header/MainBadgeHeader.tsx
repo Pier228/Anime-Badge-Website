@@ -5,11 +5,11 @@ import QRCode from "./QRCode";
 
 const Header = () => {
     return (
-        <div className={styles.header}>
+        <header className={styles.header}>
             <Clock />
             <NickName name="Name" />
             <QRCode />
-        </div>
+        </header>
     );
 };
 

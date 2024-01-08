@@ -19,32 +19,32 @@
 }
 
 .title {
-    --bg-size: 400%;
-    --color-one: #8614d8;
-    --color-two: #3a065d;
-    --color-three: #7c0f65;
+    $bg-size: 400%;
+    $color-one: #8614d8;
+    $color-two: #3a065d;
+    $color-three: #7c0f65;
     font-size: 4rem;
     background: linear-gradient(
             90deg,
-            var(--color-one),
-            var(--color-two),
-            var(--color-three),
-            var(--color-one)
+            $color-one,
+            $color-two,
+            $color-three,
+            $color-one
         )
-        0 0 / var(--bg-size) 100%;
+        0 0 / ($bg-size 100%);
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
-    animation: move-bg 8s infinite linear;
-}
+    animation: move-bg 12s infinite linear;
 
-@media (prefers-reduced-motion: no-preference) {
-    .title {
-        animation: move-bg 8s linear infinite;
-    }
-    @keyframes move-bg {
-        to {
-            background-position: var(--bg-size) 0;
+    @media (prefers-reduced-motion: no-preference) {
+        & {
+            animation: move-bg 12s linear infinite;
+        }
+        @keyframes move-bg {
+            to {
+                background-position: $bg-size 0;
+            }
         }
     }
 }

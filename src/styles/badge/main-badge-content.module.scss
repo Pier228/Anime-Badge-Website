@@ -2,7 +2,7 @@
 
 .container {
     display: flex;
-    padding: 2rem 0rem;
+    padding: 2rem 0rem 3rem 0rem;
 }
 
 .avatar {
@@ -49,8 +49,31 @@
     }
 
     span {
-        color: globals.$prime-text-light;
         font-weight: 600;
         margin-left: 0.5rem;
+        $bg-size: 400%;
+
+        background: linear-gradient(
+                90deg,
+                globals.$prime-text-light,
+                globals.$prime-text,
+                globals.$prime-text-light
+            )
+            0 0 / ($bg-size 100%);
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        animation: move-bg 15s infinite linear;
+
+        @media (prefers-reduced-motion: no-preference) {
+            & {
+                animation: move-bg 15s linear infinite;
+            }
+            @keyframes move-bg {
+                to {
+                    background-position: $bg-size 0;
+                }
+            }
+        }
     }
 }

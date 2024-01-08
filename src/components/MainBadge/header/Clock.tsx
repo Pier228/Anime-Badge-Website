@@ -11,8 +11,8 @@ const Clock = () => {
     }, []);
 
     return (
-        <div style={{minWidth:'10rem'}}>
-            <p className={styles.time_text_secondary}>
+        <div style={{ minWidth: "10rem" }}>
+            <p className={styles.time_text_secondary} suppressHydrationWarning>
                 {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}
             </p>
             <p>
