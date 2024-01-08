@@ -4,11 +4,21 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    img {
-        fill: "#6809ae";
-    }
+    vertical-align: middle;
 }
 
 .internet_icon {
     border: 2px solid globals.$prime-text-light;
+}
+
+.taskbar_container {
+    background-color: globals.$prime-text-light;
+    min-height: 3rem;
+    min-width: 20rem;
+    display: flex;
+    align-items: center;
+}
+
+.footer_title {
+    color: globals.$prime-text-light;
 }
