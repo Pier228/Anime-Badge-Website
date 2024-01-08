@@ -11,7 +11,7 @@ const Clock = () => {
     }, []);
 
     return (
-        <div>
+        <div style={{minWidth:'10rem'}}>
             <p className={styles.time_text_secondary}>
                 {date.getHours()}:{date.getMinutes()}:{date.getSeconds()}
             </p>

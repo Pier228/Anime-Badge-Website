@@ -10,3 +10,41 @@
     color: globals.$secondary-text;
     font-size: xx-large;
 }
+
+.qr_border {
+    transition: 0.3s;
+    &:hover {
+        box-shadow: 0px 0px 15px 3px globals.$prime-text-light;
+    }
+}
+
+.title {
+    --bg-size: 400%;
+    --color-one: #8614d8;
+    --color-two: #3a065d;
+    --color-three: #7c0f65;
+    font-size: 4rem;
+    background: linear-gradient(
+            90deg,
+            var(--color-one),
+            var(--color-two),
+            var(--color-three),
+            var(--color-one)
+        )
+        0 0 / var(--bg-size) 100%;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: move-bg 8s infinite linear;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .title {
+        animation: move-bg 8s linear infinite;
+    }
+    @keyframes move-bg {
+        to {
+            background-position: var(--bg-size) 0;
+        }
+    }
+}
