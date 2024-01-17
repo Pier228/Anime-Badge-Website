@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import styles from "@/styles/badge/main-badge-header.module.scss";
+import styles from "@/styles/mainBadge/main-badge-header.module.scss";
 
 const Clock = () => {
     const [date, setDate] = useState(new Date());

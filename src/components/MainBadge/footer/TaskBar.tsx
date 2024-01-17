@@ -1,4 +1,4 @@
-import styles from '@/styles/badge/main-badge-footer.module.scss'
+import styles from '@/styles/mainBadge/main-badge-footer.module.scss'
 
 const TaskBar = () => {
   return (
@@ -8,4 +8,4 @@ const TaskBar = () => {
   )
 }
 
-export default TaskBar
+export default TaskBar;

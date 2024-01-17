@@ -1,7 +1,7 @@
 import MainBadgeFooter from "./footer/MainBadgeFooter";
 import MainBadgeHeader from "./header/MainBadgeHeader";
 import MainContainer from "./main/MainContainer";
-import styles from "@/styles/badge/main-badge.module.scss";
+import styles from "@/styles/mainBadge/main-badge.module.scss";
 import Image from "next/image";
 
 const Main = () => {

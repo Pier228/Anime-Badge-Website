@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import styles from '@/styles/badge/main-badge-header.module.scss'
+import styles from '@/styles/mainBadge/main-badge-header.module.scss'
 
 const QRCode = () => {
     return (

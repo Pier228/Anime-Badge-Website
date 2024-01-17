@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "@/styles/badge/main-badge-content.module.scss";
+import styles from "@/styles/mainBadge/main-badge-content.module.scss";
 import Corner from "./Corner";
 
 const Avatar = () => {
