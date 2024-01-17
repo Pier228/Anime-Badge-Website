@@ -1,0 +1,41 @@
+@use "../globals.scss";
+
+.container {
+    margin: 2rem 2rem;
+    padding: 0.3rem 0;
+    background-color: globals.$prime-bg;
+    color: globals.$secondary-text-50;
+    border-radius: 10px;
+    width: 20rem;
+    height: 16.5rem;
+
+    & header {
+        display: flex;
+        width: 100%;
+        align-items: end;
+        justify-content: space-between;
+        height: 1.5rem;
+    }
+
+    & .line {
+        height: 2px;
+        width: 70%;
+
+        background: globals.$secondary-text;
+        background: linear-gradient(
+            90deg,
+            globals.$secondary-text 87%,
+            globals.$prime-bg
+        );
+    }
+
+    & .options_container {
+        width: 20%;
+        display: flex;
+        justify-content: space-around;
+
+        & img {
+            cursor: pointer;
+        }
+    }
+}

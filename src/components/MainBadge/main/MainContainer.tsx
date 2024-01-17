@@ -1,4 +1,4 @@
-import styles from "@/styles/badge/main-badge-content.module.scss";
+import styles from "@/styles/mainBadge/main-badge-content.module.scss";
 import Avatar from "./Avatar";
 import Information from "./Information";
 

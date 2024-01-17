@@ -1,4 +1,4 @@
-import styles from "@/styles/badge/main-badge-header.module.scss";
+import styles from "@/styles/mainBadge/main-badge-header.module.scss";
 import Clock from "./Clock";
 import NickName from "./NickName";
 import QRCode from "./QRCode";

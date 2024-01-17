@@ -1,4 +1,4 @@
-import styles from "@/styles/badge/main-badge-header.module.scss";
+import styles from "@/styles/mainBadge/main-badge-header.module.scss";
 import { Permanent_Marker } from "next/font/google";
 
 const inter = Permanent_Marker({

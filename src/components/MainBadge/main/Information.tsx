@@ -1,5 +1,5 @@
 import IProfile from "@/interfaces/IProfile";
-import styles from "@/styles/badge/main-badge-content.module.scss";
+import styles from "@/styles/mainBadge/main-badge-content.module.scss";
 
 const Information = (props: IProfile) => {
     return (

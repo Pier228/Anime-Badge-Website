@@ -1,4 +1,4 @@
-import styles from "@/styles/badge/main-badge-footer.module.scss";
+import styles from "@/styles/mainBadge/main-badge-footer.module.scss";
 import { Noto_Sans_Javanese } from "next/font/google";
 import Image from "next/image";
 import TaskBar from "./TaskBar";
