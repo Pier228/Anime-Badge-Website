@@ -6,13 +6,13 @@ const Home = () => {
     return (
         <>
             <div>
-                <Badge children={<div>Calendar</div>} />
-                <Badge children={<DanceFloor />} />
+                <Badge children={<div>Calendar</div>} id="calendar" />
+                <Badge children={<DanceFloor />} id="danceFloor" />
             </div>
             <MainBadge />
             <div>
-                <Badge children={<div>Weather</div>} />
-                <Badge children={<div>Console</div>} />
+                <Badge children={<div>Weather</div>} id="weather" />
+                <Badge children={<div>Console</div>} id="console" />
             </div>
         </>
     );
