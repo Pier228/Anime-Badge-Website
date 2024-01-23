@@ -1,19 +1,21 @@
 "use client";
-
 import styles from "@/styles/badge/badge.module.scss";
 import Image from "next/image";
 import type IBadge from "@/interfaces/Ibadge";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleVisibility } from "@/lib/reducers/badgeReducer";
+import { RootState } from "@/lib/store";
 
 const Badge = (props: IBadge) => {
-    const [isHidden, setHidden] = useState(false);
+    const dispatch = useDispatch();
+    const isHidden = useSelector(
+        (state: RootState) =>
+            state.badge.find((b) => b.id === props.id)?.isHidden
+    );
 
-    // useEffect(() => {
-    //     return () => {
-    //         console.log(123);
-    //     };
-    // }, [isHidden]);
-
+    const handleToggleVisibility = () => {
+        dispatch(toggleVisibility(props.id));
+    };
     return (
         <div
             className={styles.container}
@@ -27,14 +29,14 @@ const Badge = (props: IBadge) => {
                         width={15}
                         height={15}
                         alt="hide button"
-                        onClick={() => setHidden(true)}
+                        onClick={() => handleToggleVisibility()}
                     />
                     <Image
                         src="/images/close.svg"
                         width={15}
                         height={15}
                         alt="close button"
-                        onClick={() => setHidden(true)}
+                        onClick={() => handleToggleVisibility()}
                     />
                 </div>
             </header>
