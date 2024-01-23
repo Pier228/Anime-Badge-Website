@@ -16,6 +16,7 @@ const Badge = (props: IBadge) => {
     const handleToggleVisibility = () => {
         dispatch(toggleVisibility(props.id));
     };
+    
     return (
         <div
             className={styles.container}

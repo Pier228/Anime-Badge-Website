@@ -1,7 +1,7 @@
 import styles from "@/styles/mainBadge/main-badge-footer.module.scss";
 import { Noto_Sans_Javanese } from "next/font/google";
 import Image from "next/image";
-import TaskBar from "./TaskBar";
+import ToolBar from "./TaskBar";
 
 const footer_title = Noto_Sans_Javanese({
     subsets: ["javanese"],
@@ -18,7 +18,7 @@ const MainBadgeFooter = () => {
                 height={40}
                 className={styles.internet_icon}
             />
-            <TaskBar />
+            <ToolBar />
             <div className={footer_title.className + " " + styles.footer_title}>
                 ウクライナに栄光あれ
             </div>
