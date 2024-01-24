@@ -1,4 +1,5 @@
 import Badge from "@/components/Badge/Badge";
+import CalendarBadge from "@/components/Calendar/Calendar";
 import DanceFloor from "@/components/DanceFloor/DanceFloor";
 import MainBadge from "@/components/MainBadge/MainBadge";
 
@@ -6,7 +7,7 @@ const Home = () => {
     return (
         <>
             <div>
-                <Badge children={<div>Calendar</div>} id="calendar" />
+                <Badge children={<CalendarBadge />} id="calendar" />
                 <Badge children={<DanceFloor />} id="danceFloor" />
             </div>
             <MainBadge />

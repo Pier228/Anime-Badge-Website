@@ -16,7 +16,7 @@ const Badge = (props: IBadge) => {
     const handleToggleVisibility = () => {
         dispatch(toggleVisibility(props.id));
     };
-    
+
     return (
         <div
             className={styles.container}
@@ -41,7 +41,7 @@ const Badge = (props: IBadge) => {
                     />
                 </div>
             </header>
-            {props.children}
+            <div>{props.children}</div>
         </div>
     );
 };
