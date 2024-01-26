@@ -1,0 +1,112 @@
+@use "../globals.scss";
+
+.loader {
+    transform: rotateZ(45deg);
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    color: globals.$secondary-text;
+
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 40%;
+        top: 40%;
+
+        width: inherit;
+        height: inherit;
+        border-radius: 50%;
+        transform: rotateX(70deg);
+        animation: 1s spin linear infinite;
+    }
+
+    &:after {
+        color: globals.$prime-text-light;
+        transform: rotateY(70deg);
+        animation-delay: 0.4s;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotateZ(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateZ(360deg);
+    }
+}
+
+@keyframes rotateccw {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+@keyframes spin {
+    0%,
+    100% {
+        box-shadow: 0.2em 0px 0 0px currentcolor;
+    }
+    12% {
+        box-shadow: 0.2em 0.2em 0 0 currentcolor;
+    }
+    25% {
+        box-shadow: 0 0.2em 0 0px currentcolor;
+    }
+    37% {
+        box-shadow: -0.2em 0.2em 0 0 currentcolor;
+    }
+    50% {
+        box-shadow: -0.2em 0 0 0 currentcolor;
+    }
+    62% {
+        box-shadow: -0.2em -0.2em 0 0 currentcolor;
+    }
+    75% {
+        box-shadow: 0px -0.2em 0 0 currentcolor;
+    }
+    87% {
+        box-shadow: 0.2em -0.2em 0 0 currentcolor;
+    }
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: globals.$prime-text-light;
+
+    & h3 {
+        color: globals.$prime-text;
+    }
+}
+
+.weather_image {
+    margin-top: -1rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+}
+
+.footer {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 1rem;
+}
+
+.data_container {
+    display: flex;
+    align-items: center;
+    & > img {
+        margin: 0 0.3rem;
+    }
+}
