@@ -1,0 +1,17 @@
+@use "../globals.scss";
+.container {
+    height: 13rem;
+
+    div {
+        overflow: auto;
+        &::-webkit-scrollbar {
+            width: 0.3rem;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: globals.$secondary-text-50;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: globals.$secondary-text;
+        }
+    }
+}
