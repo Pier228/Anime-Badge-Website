@@ -1,14 +1,13 @@
 "use client";
-import Calendar, { MonthView } from "react-calendar";
+import Calendar from "react-calendar";
 import { useState } from "react";
-// import "react-calendar/dist/Calendar.css";
 import "@/styles/calendar/calendar.scss";
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 const CalendarBadge = () => {
-    const [value, onChange] = useState<Value>(new Date());
+    const [value] = useState<Value>(new Date());
 
     return (
         <>

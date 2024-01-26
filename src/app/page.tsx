@@ -2,6 +2,7 @@ import Badge from "@/components/Badge/Badge";
 import CalendarBadge from "@/components/Calendar/Calendar";
 import DanceFloor from "@/components/DanceFloor/DanceFloor";
 import MainBadge from "@/components/MainBadge/MainBadge";
+import TerminalBadge from "@/components/Terminal/TerminalBadge";
 
 const Home = () => {
     return (
@@ -13,7 +14,7 @@ const Home = () => {
             <MainBadge />
             <div>
                 <Badge children={<div>Weather</div>} id="weather" />
-                <Badge children={<div>Console</div>} id="console" />
+                <Badge children={<TerminalBadge />} id="console" />
             </div>
         </>
     );
