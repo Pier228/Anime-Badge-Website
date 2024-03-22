@@ -1,0 +1,33 @@
+@use "../globals.scss";
+
+%button {
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    position: absolute;
+    top: 2rem;
+    color: globals.$prime-text-light;
+    background-color: globals.$prime-bg;
+    border: 2px solid globals.$prime-bg;
+    border-radius: 15px;
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: medium;
+    transition: border 0.3s;
+    text-decoration: none;
+
+    &:hover {
+        border-color: globals.$prime-text-light;
+    }
+}
+
+.left_btn {
+    @extend %button; 
+    left: 3rem;
+}
+
+.right_btn {
+    @extend %button;
+    right: 3rem;
+}
