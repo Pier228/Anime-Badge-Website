@@ -1,16 +1,14 @@
-"use client";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./index.scss";
 import StoreProvider from "./StoreProvider";
-import { TerminalContextProvider } from "react-terminal";
-
-const inter = Inter({ subsets: ["latin"] });
+import type { Metadata } from "next/types";
+import "./index.scss";
 
 export const metadata: Metadata = {
-    title: "Anime Badge",
+    title: "Main page",
     description: "Create your own anime badge",
 };
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
     children,
@@ -20,9 +18,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <StoreProvider>
-                <TerminalContextProvider>
-                    <body className={inter.className}>{children}</body>
-                </TerminalContextProvider>
+                <body className={inter.className}>{children}</body>
             </StoreProvider>
         </html>
     );

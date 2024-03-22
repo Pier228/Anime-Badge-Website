@@ -11,7 +11,6 @@ const WeatherBadge = () => {
         const fetchData = async () => {
             const data = await WeatherAPI.getLocation();
             setData(data);
-            console.log(data);
         };
         fetchData();
     }, []);
