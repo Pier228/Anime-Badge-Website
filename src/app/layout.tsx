@@ -4,7 +4,7 @@ import type { Metadata } from "next/types";
 import "./index.scss";
 
 export const metadata: Metadata = {
-    title: "Main page",
+    title: "Anime Badge",
     description: "Create your own anime badge",
 };
 

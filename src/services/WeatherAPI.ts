@@ -1,7 +1,7 @@
 class WeatherAPIService {
     static async getWeather(latitude?: number, longitude?: number) {
         let fetchData;
-
+        
         try {
             if (latitude && longitude) {
                 fetchData = await fetch(
