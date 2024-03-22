@@ -6,13 +6,13 @@ class WeatherAPIService {
             if (latitude && longitude) {
                 fetchData = await fetch(
                     `https://api.weatherapi.com/v1/current.json?key=${
-                        process.env.NEXT_PUBLIC_WEATHER_API_KEY
+                        process.env.WEATHER_API_KEY
                     }&q=${latitude + "," + longitude}&aqi=no`,
                     { next: { revalidate: 600 } }
                 );
             } else {
                 fetchData = await fetch(
-                    `https://api.weatherapi.com/v1/current.json?key=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}&q=London&aqi=no`,
+                    `https://api.weatherapi.com/v1/current.json?key=${process.env.WEATHER_API_KEY}&q=London&aqi=no`,
                     { next: { revalidate: 600 } }
                 );
             }
