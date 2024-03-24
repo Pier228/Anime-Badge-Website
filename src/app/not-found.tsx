@@ -1,4 +1,4 @@
-import styles from "@/styles/404.module.scss";
+import styles from "@/styles/404/404.module.scss";
 import Link from "next/link";
 import type { Metadata } from "next/types";
 import btn_styles from "../styles/buttons/buttons.module.scss";

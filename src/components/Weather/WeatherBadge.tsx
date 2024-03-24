@@ -3,6 +3,7 @@ import WeatherAPI from "@/services/WeatherAPI";
 import { useEffect, useState } from "react";
 import styles from "@/styles/weather/weather.module.scss";
 import Image from "next/image";
+import loader from "@/styles/loader/loader.module.scss"
 
 const WeatherBadge = () => {
     const [data, setData] = useState<any>(null);
@@ -51,7 +52,9 @@ const WeatherBadge = () => {
             </div>
         </div>
     ) : (
-        <span className={styles.loader} />
+        <div className={loader.loader_badge_container}>
+            <span className={loader.loader} />
+        </div>
     );
 };
 
