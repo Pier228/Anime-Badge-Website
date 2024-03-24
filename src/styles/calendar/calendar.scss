@@ -6,7 +6,7 @@
 
     .react-calendar__tile--active abbr,
     .react-calendar__month-view__weekdays__weekday--current abbr {
-        color: globals.$prime-text-light;
+        color: globals.$prime-text-light !important;
     }
 
     .react-calendar__tile {
