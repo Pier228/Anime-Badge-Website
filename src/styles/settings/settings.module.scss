@@ -1,5 +1,25 @@
 @use "../globals.scss";
 
-.alert_text{ //delete
-    color: globals.$prime-text-light;
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.main {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    width: 100%;
+
+    p {
+        color: globals.$prime-text-light;
+    }
+}
+
+.footer{
+    margin-top: 1rem;
+    width: 100%;
 }

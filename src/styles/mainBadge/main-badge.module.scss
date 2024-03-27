@@ -1,14 +1,22 @@
 @use "../globals.scss";
 
-.container {
+@mixin container($width: 50%) {
     background-color: globals.$prime-bg;
     padding: 1rem 2rem;
     border-radius: 25px;
     color: globals.$secondary-text-50;
     font-weight: 900;
     font-size: x-large;
-    width: 50%;
     position: relative;
+    width: $width;
+}
+
+.container {
+    @include container();
+}
+
+.container_35 {
+    @include container($width: 35%);
 }
 
 .katana_img_top {

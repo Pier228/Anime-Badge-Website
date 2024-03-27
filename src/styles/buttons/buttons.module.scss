@@ -23,11 +23,35 @@
 }
 
 .left_btn {
-    @extend %button; 
+    @extend %button;
     left: 3rem;
 }
 
 .right_btn {
     @extend %button;
     right: 3rem;
+}
+
+.submit_btn {
+    display: flex;
+    align-items: center;
+    color: globals.$prime-text-light;
+    background-color: transparent;
+    border: 2px solid globals.$prime-text-light;
+    border-radius: 15px;
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: medium;
+    transition: box-shadow 0.3s ease-in-out;
+    text-decoration: none;
+    margin: 0 auto;
+
+    &:hover {
+        box-shadow: 0 0px 15px 0px globals.$prime-text-light;
+    }
+
+    &:active {
+        background-color: globals.$prime-text;
+    }
 }
