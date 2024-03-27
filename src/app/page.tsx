@@ -5,26 +5,28 @@ import DanceFloor from "@/components/DanceFloor/DanceFloor";
 import MainBadge from "@/components/MainBadge/MainBadge";
 import TerminalBadge from "@/components/Terminal/TerminalBadge";
 import WeatherBadge from "@/components/Weather/WeatherBadge";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../styles/buttons/buttons.module.scss";
 import Link from "next/link";
 import Background from "@/components/Background/Background";
+import BackgroundService from "@/services/BackgroundService";
 
 const Home = () => {
-    const [isVisible, setVisibility] = useState(true);
+    const [isVisible, setVisibility] = useState(false);
 
     const visibilityChange = () => {
-        setVisibility((prevVisibility) => !prevVisibility);
+        setVisibility(BackgroundService.changeStatus());
     };
+
+    useEffect(() => {
+        setVisibility(BackgroundService.isExist());
+    }, []);
 
     return (
         <>
             {isVisible && <Background />}
-            <button
-                className={styles.left_btn}
-                onClick={visibilityChange}
-            >
+            <button className={styles.left_btn} onClick={visibilityChange}>
                 <Image
                     src={`${
                         isVisible
