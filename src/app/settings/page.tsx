@@ -1,20 +1,20 @@
-import type { Metadata } from "next/types";
-import styles from "../../styles/settings/settings.module.scss";
-import btn_styles from "../../styles/buttons/buttons.module.scss";
+"use client";
+import styles from "@/styles/settings/settings.module.scss";
+import btn_styles from "@/styles/buttons/buttons.module.scss";
 import Link from "next/link";
 import badgeStyle from "@/styles/mainBadge/main-badge.module.scss";
 import NickName from "@/components/MainBadge/header/NickName";
 import Image from "next/image";
 import buttonStyle from "@/styles/buttons/buttons.module.scss";
-
-export const metadata: Metadata = {
-    title: "Settings",
-    description: "Create your own anime badge",
-};
+import Background from "@/components/Background/Background";
+import useBackgroundVisibility from "@/hooks/useBackgroundVisibility";
 
 const Settings = () => {
+    const { isVisible, changeVisibility } = useBackgroundVisibility();
+
     return (
         <>
+            {isVisible && <Background />}
             <Link href="/" className={btn_styles.left_btn}>
                 <Image
                     src="/images/home.png"

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 interface BadgeState {
     id: string;
     isHidden: boolean;
