@@ -1,10 +1,8 @@
 "use client";
 import styles from "@/styles/settings/settings.module.scss";
-import Link from "next/link";
 import badgeStyle from "@/styles/mainBadge/main-badge.module.scss";
 import NickName from "@/components/MainBadge/header/NickName";
 import Image from "next/image";
-import rounded_btn from "@/styles/buttons/rounded-button.module.scss";
 import submit_btn from "@/styles/buttons/submit-button.module.scss";
 import Background from "@/components/Background/Background";
 import useBackgroundVisibility from "@/hooks/useBackgroundVisibility";
@@ -12,34 +10,60 @@ import Parameter from "@/components/Settings/Parameter";
 import ToggleButton from "@/components/Settings/ToggleButton";
 import InputField from "@/components/Settings/InputField";
 import Alert from "@/components/Alerts/Alert";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import Caching from "@/services/ChachingService";
+import useData from "@/hooks/useData";
+import LinkButton from "@/components/Buttons/LinkButton";
+import useWeatherData from "@/hooks/useWeatherData";
 
 const Settings = () => {
     const { isVisible, changeVisibility } = useBackgroundVisibility();
     const [alertVisibility, setAlertVisibility] = useState(false);
+    const [alertMessage, setAlertMessage] = useState("");
+    const [alertColor, setAlertColor] = useState("");
+    const data = useData();
+    const weatherData = useWeatherData();
 
-    const applyChanges = () => setAlertVisibility(true);
+    const nickname = useRef<HTMLInputElement>(null);
+    const bottomText = useRef<HTMLInputElement>(null);
+
+    const applyChanges = () => {
+        if (nickname.current?.value && bottomText.current?.value) {
+            Caching.cacheData(
+                "anime-badge-data",
+                JSON.stringify({
+                    nickname: nickname.current?.value,
+                    bottomText: bottomText.current?.value,
+                })
+            );
+            setAlertColor("green");
+            setAlertMessage("Settings successfully applied!");
+            setAlertVisibility(true);
+        } else {
+            setAlertColor("red");
+            setAlertMessage("Error! Failed to apply settings!");
+            setAlertVisibility(true);
+        }
+    };
 
     return (
         <>
             {isVisible && <Background />}
             {alertVisibility && (
                 <Alert
-                    message="Settings successfully applied!"
-                    color="green"
+                    message={alertMessage}
+                    color={alertColor}
                     isVisible={alertVisibility}
                     setVisibility={setAlertVisibility}
                 />
             )}
-            <Link href="/" className={rounded_btn.left_btn}>
-                <Image
-                    src="/images/home.png"
-                    width={20}
-                    height={20}
-                    alt="settings"
-                />
-                Back to main
-            </Link>
+            <LinkButton
+                href="/"
+                text="Back to main"
+                image_src="/images/home.png"
+                classNames="left_btn"
+            />
+
             <div className={badgeStyle.container_35}>
                 <Image
                     src="/images/katana.png"
@@ -58,11 +82,27 @@ const Settings = () => {
                     />
                     <Parameter
                         name="Nickname"
-                        children={<InputField value="Name" />}
+                        children={
+                            <InputField
+                                value={data?.nickname || "Name"}
+                                inputRef={nickname}
+                                placeholder="Enter Nickname"
+                                maxLength={16}
+                            />
+                        }
                     />
                     <Parameter
                         name="Bottom text"
-                        children={<InputField value="ウクライナに栄光あれ" />}
+                        children={
+                            <InputField
+                                value={
+                                    data?.bottomText || "ウクライナに栄光あれ"
+                                }
+                                inputRef={bottomText}
+                                placeholder="Enter bottom text"
+                                maxLength={20}
+                            />
+                        }
                     />
                     <Parameter name="Dance floor" children={<p>Choose</p>} />
                     <Parameter
@@ -74,7 +114,7 @@ const Settings = () => {
                             />
                         }
                     />
-                    <Parameter name="Location" children={<p>Choose</p>} />
+                    <Parameter name="Location" children={<p>{weatherData?.location.name || 'Choose'}</p>} />
                 </main>
                 <footer className={styles.footer}>
                     <button

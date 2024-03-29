@@ -7,9 +7,9 @@ import TerminalBadge from "@/components/Terminal/TerminalBadge";
 import WeatherBadge from "@/components/Weather/WeatherBadge";
 import Image from "next/image";
 import rounded_btn from "@/styles/buttons/rounded-button.module.scss";
-import Link from "next/link";
 import Background from "@/components/Background/Background";
 import useBackgroundVisibility from "@/hooks/useBackgroundVisibility";
+import LinkButton from "@/components/Buttons/LinkButton";
 
 const Home = () => {
     const { isVisible, changeVisibility } = useBackgroundVisibility();
@@ -17,7 +17,7 @@ const Home = () => {
     return (
         <>
             {isVisible && <Background />}
-            
+
             {/* The button will be placed on the settings page */}
             <button
                 className={rounded_btn.left_btn}
@@ -35,15 +35,12 @@ const Home = () => {
                 />
                 Background mode
             </button>
-            <Link href="/settings" className={rounded_btn.right_btn}>
-                <Image
-                    src="/images/settings.png"
-                    width={20}
-                    height={20}
-                    alt="settings"
-                />
-                Settings
-            </Link>
+            <LinkButton
+                text="Settings"
+                href="/settings"
+                image_src="/images/settings.png"
+                classNames="right_btn"
+            />
             <div>
                 <Badge children={<CalendarBadge />} id="calendar" />
                 <Badge children={<DanceFloor />} id="danceFloor" />

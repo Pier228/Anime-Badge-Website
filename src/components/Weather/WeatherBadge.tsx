@@ -1,20 +1,10 @@
-"use client";
-import WeatherAPI from "@/services/WeatherAPI";
-import { useEffect, useState } from "react";
 import styles from "@/styles/weather/weather.module.scss";
 import Image from "next/image";
-import loader from "@/styles/loader/loader.module.scss"
+import loader from "@/styles/loader/loader.module.scss";
+import useWeatherData from "@/hooks/useWeatherData";
 
 const WeatherBadge = () => {
-    const [data, setData] = useState<any>(null);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await WeatherAPI.getLocation();
-            setData(data);
-        };
-        fetchData();
-    }, []);
+    const data = useWeatherData();    
 
     return data ? (
         <div className={styles.container}>

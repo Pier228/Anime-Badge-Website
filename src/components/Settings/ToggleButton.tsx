@@ -1,4 +1,4 @@
-import IToggleButton from "@/interfaces/IToggleButton";
+import type IToggleButton from "@/interfaces/IToggleButton";
 import toggle_btn from "@/styles/buttons/toggle-button.module.scss";
 
 const ToggleButton = (params: IToggleButton) => {

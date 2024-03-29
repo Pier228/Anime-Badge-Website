@@ -1,4 +1,4 @@
-import IParams from "@/interfaces/IParams";
+import type IParams from "@/interfaces/IParams";
 import styles from "@/styles/settings/parameters.module.scss";
 
 const Parameter = (params: IParams) => {
