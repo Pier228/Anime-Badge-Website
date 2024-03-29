@@ -2,6 +2,7 @@ import styles from "@/styles/mainBadge/main-badge-footer.module.scss";
 import { Noto_Sans_Javanese } from "next/font/google";
 import Image from "next/image";
 import ToolBar from "./TaskBar";
+import useData from "@/hooks/useData";
 
 const footer_title = Noto_Sans_Javanese({
     subsets: ["javanese"],
@@ -9,6 +10,8 @@ const footer_title = Noto_Sans_Javanese({
 });
 
 const MainBadgeFooter = () => {
+    const data = useData();
+
     return (
         <footer className={styles.footer}>
             <Image
@@ -20,7 +23,7 @@ const MainBadgeFooter = () => {
             />
             <ToolBar />
             <div className={footer_title.className + " " + styles.footer_title}>
-                ウクライナに栄光あれ
+                {data?.bottomText || "ウクライナに栄光あれ"}
             </div>
         </footer>
     );

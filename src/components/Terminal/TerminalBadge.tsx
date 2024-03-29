@@ -11,7 +11,7 @@ const TerminalBadge = () => {
         calendar: () => {
             dispatch(toggleVisibility("calendar"));
         },
-        dance: () => {
+        danceFloor: () => {
             dispatch(toggleVisibility("danceFloor"));
         },
         weather: () => {

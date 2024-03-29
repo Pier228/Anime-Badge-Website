@@ -1,9 +1,16 @@
-import IAlert from "@/interfaces/IAlert";
+import type IAlert from "@/interfaces/IAlert";
 import styles from "@/styles/alerts/alerts.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Alert = (props: IAlert) => {
     const [isVisible, setVisibility] = useState(props.isVisible);
+
+    useEffect(() => {
+        setTimeout(() => {
+            props.setVisibility(false);
+        }, 4000);
+    }, [isVisible])
+    
 
     return (
         isVisible && (

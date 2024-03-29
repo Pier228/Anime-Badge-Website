@@ -9,7 +9,7 @@ const inter = Permanent_Marker({
 const NickName = ({ name }: { name: string }) => {
     return (
         <h1 className={styles.title + " " + inter.className}>
-            {name.length < 15 ? name : "Name"}
+            {name}
         </h1>
     );
 };
