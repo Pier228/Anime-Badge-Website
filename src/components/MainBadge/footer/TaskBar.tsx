@@ -1,15 +1,18 @@
-"use client";
 import { RootState } from "@/lib/store";
 import styles from "@/styles/mainBadge/main-badge-footer.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { toggleVisibility } from "@/lib/reducers/badgeReducer";
+import { createSelector } from "reselect";
 
 const ToolBar = () => {
     const dispatch = useDispatch();
-    const icons = useSelector((state: RootState) =>
-        state.badge.filter((obj) => obj.isHidden)
-    );
+    
+    const getHiddenIcons = createSelector(
+        (state: RootState) => state.badge,
+        (badge) => badge.filter((obj) => obj.isHidden)
+      );
+    const icons = useSelector(getHiddenIcons);
 
     return (
         <div className={styles.taskbar_container}>

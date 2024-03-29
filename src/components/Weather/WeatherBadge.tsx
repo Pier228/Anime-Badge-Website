@@ -19,7 +19,7 @@ const WeatherBadge = () => {
     return data ? (
         <div className={styles.container}>
             <Image
-                loader={() => "https:" + data.current.condition.icon}
+                unoptimized
                 alt="weather image"
                 src={"https:" + data.current.condition.icon}
                 width={120}
