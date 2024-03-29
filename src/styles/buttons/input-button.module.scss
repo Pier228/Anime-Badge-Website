@@ -1,0 +1,16 @@
+@use "../globals.scss";
+
+.input {
+    background-color: globals.$prime-bg;
+    padding: 0.5rem;
+    border: 2px solid globals.$secondary-text;
+    border-radius: 15px;
+    color: globals.$prime-text-light;
+    font-weight: 600;
+    font-size: large;
+    outline: none;
+
+    &:focus {
+        background-color: globals.$secondary-text-50;
+    }
+}

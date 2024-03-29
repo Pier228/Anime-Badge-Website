@@ -1,0 +1,12 @@
+@use "../globals.scss";
+
+.container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+        color: globals.$prime-text-light;
+    }
+}

@@ -1,7 +1,7 @@
 import styles from "@/styles/404/404.module.scss";
 import Link from "next/link";
 import type { Metadata } from "next/types";
-import btn_styles from "../styles/buttons/buttons.module.scss";
+import rounded_btn from "../styles/buttons/rounded-button.module.scss";
 
 export const metadata: Metadata = {
     title: "Page not found",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const NotFound = () => {
     return (
         <>
-            <Link href="/" className={btn_styles.left_btn}>
+            <Link href="/" className={rounded_btn.left_btn}>
                 Back to main
             </Link>
             <h1 className={styles.text}>Page not found</h1>
