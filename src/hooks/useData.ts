@@ -9,7 +9,11 @@ const useData = (): IData | null => {
         const getData = Caching.getData("anime-badge-data");
         if (getData) {
             setData(getData);
+        }else{
+            const tmpData = Caching.setDefaultData();
+            setData(tmpData);
         }
+
     }, []);
 
     return data;

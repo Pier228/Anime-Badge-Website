@@ -12,8 +12,8 @@ const WeatherBadge = () => {
                 unoptimized
                 alt="weather image"
                 src={"https:" + data.current.condition.icon}
-                width={120}
-                height={120}
+                width={110}
+                height={110}
                 className={styles.weather_image}
             />
             <h2>

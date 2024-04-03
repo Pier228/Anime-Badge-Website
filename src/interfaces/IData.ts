@@ -4,4 +4,6 @@ export default interface IData {
     character?: string;
     danceFloor?: string;
     location?: string;
+    background?: string;
+    cursorEffect?: string;
 }
