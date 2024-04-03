@@ -5,7 +5,7 @@ import NickName from "@/components/MainBadge/header/NickName";
 import Image from "next/image";
 import submit_btn from "@/styles/buttons/submit-button.module.scss";
 import Background from "@/components/Background/Background";
-import useBackgroundVisibility from "@/hooks/useBackgroundVisibility";
+import useToggleButton from "@/hooks/useToggleButton";
 import Parameter from "@/components/Settings/Parameter";
 import ToggleButton from "@/components/Settings/ToggleButton";
 import InputField from "@/components/Settings/InputField";
@@ -15,9 +15,15 @@ import Caching from "@/services/ChachingService";
 import useData from "@/hooks/useData";
 import LinkButton from "@/components/Buttons/LinkButton";
 import useWeatherData from "@/hooks/useWeatherData";
+import Cursor from "@/components/Cursor/Cursor";
 
 const Settings = () => {
-    const { isVisible, changeVisibility } = useBackgroundVisibility();
+    const {
+        isBackgroundVisible,
+        isCursorEffect,
+        changeBackgroundVisibility,
+        changeCursorVisibility,
+    } = useToggleButton();
     const [alertVisibility, setAlertVisibility] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const [alertColor, setAlertColor] = useState("");
@@ -26,16 +32,18 @@ const Settings = () => {
 
     const nickname = useRef<HTMLInputElement>(null);
     const bottomText = useRef<HTMLInputElement>(null);
+    const background = useRef<HTMLInputElement>(null);
+    const cursorEffect = useRef<HTMLInputElement>(null);
 
     const applyChanges = () => {
         if (nickname.current?.value && bottomText.current?.value) {
-            Caching.cacheData(
-                "anime-badge-data",
-                JSON.stringify({
-                    nickname: nickname.current?.value,
-                    bottomText: bottomText.current?.value,
-                })
-            );
+            Caching.cacheData("anime-badge-data", {
+                ...data,
+                nickname: nickname.current?.value,
+                bottomText: bottomText.current?.value,
+                background: background.current?.checked,
+                cursorEffect: cursorEffect.current?.checked,
+            });
             setAlertColor("green");
             setAlertMessage("Settings successfully applied!");
             setAlertVisibility(true);
@@ -48,7 +56,8 @@ const Settings = () => {
 
     return (
         <>
-            {isVisible && <Background />}
+            <Cursor cursorEffectVisible={isCursorEffect} />
+            {isBackgroundVisible && <Background />}
             {alertVisibility && (
                 <Alert
                     message={alertMessage}
@@ -109,12 +118,28 @@ const Settings = () => {
                         name="Background"
                         children={
                             <ToggleButton
-                                isChecked={isVisible}
-                                changeStatus={changeVisibility}
+                                ref={background}
+                                isChecked={isBackgroundVisible}
+                                changeStatus={changeBackgroundVisibility}
                             />
                         }
                     />
-                    <Parameter name="Location" children={<p>{weatherData?.location.name || 'Choose'}</p>} />
+                    <Parameter
+                        name="Cursor Effect"
+                        children={
+                            <ToggleButton
+                                ref={cursorEffect}
+                                isChecked={isCursorEffect}
+                                changeStatus={changeCursorVisibility}
+                            />
+                        }
+                    />
+                    <Parameter
+                        name="Location"
+                        children={
+                            <p>{weatherData?.location.name || "Choose"}</p>
+                        }
+                    />
                 </main>
                 <footer className={styles.footer}>
                     <button
