@@ -10,12 +10,14 @@ import rounded_btn from "@/styles/buttons/rounded-button.module.scss";
 import Background from "@/components/Background/Background";
 import useBackgroundVisibility from "@/hooks/useBackgroundVisibility";
 import LinkButton from "@/components/Buttons/LinkButton";
+import Cursor from "@/components/Cursor/Cursor";
 
 const Home = () => {
     const { isVisible, changeVisibility } = useBackgroundVisibility();
 
     return (
         <>
+            <Cursor />
             {isVisible && <Background />}
 
             {/* The button will be placed on the settings page */}

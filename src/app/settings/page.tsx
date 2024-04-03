@@ -15,6 +15,7 @@ import Caching from "@/services/ChachingService";
 import useData from "@/hooks/useData";
 import LinkButton from "@/components/Buttons/LinkButton";
 import useWeatherData from "@/hooks/useWeatherData";
+import Cursor from "@/components/Cursor/Cursor";
 
 const Settings = () => {
     const { isVisible, changeVisibility } = useBackgroundVisibility();
@@ -48,6 +49,7 @@ const Settings = () => {
 
     return (
         <>
+            <Cursor />
             {isVisible && <Background />}
             {alertVisibility && (
                 <Alert
@@ -114,7 +116,21 @@ const Settings = () => {
                             />
                         }
                     />
-                    <Parameter name="Location" children={<p>{weatherData?.location.name || 'Choose'}</p>} />
+                    <Parameter
+                        name="Cursor Effect"
+                        children={
+                            <ToggleButton
+                                isChecked={isVisible}
+                                changeStatus={changeVisibility}
+                            />
+                        }
+                    />
+                    <Parameter
+                        name="Location"
+                        children={
+                            <p>{weatherData?.location.name || "Choose"}</p>
+                        }
+                    />
                 </main>
                 <footer className={styles.footer}>
                     <button
