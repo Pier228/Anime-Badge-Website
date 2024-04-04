@@ -94,13 +94,18 @@ const Settings = () => {
                 <main className={styles.main}>
                     <Parameter
                         name="Character"
-                        children={<p>Monkey D. Luffy</p>}
+                        children={
+                            <ChooseInput
+                                text={data?.character || ""}
+                                onClick={() => console.warn('This function in development')}
+                            />
+                        }
                     />
                     <Parameter
                         name="Nickname"
                         children={
                             <InputField
-                                value={data?.nickname || "Name"}
+                                value={data?.nickname || ""}
                                 inputRef={nickname}
                                 placeholder="Enter Nickname"
                                 maxLength={16}
@@ -111,9 +116,7 @@ const Settings = () => {
                         name="Bottom text"
                         children={
                             <InputField
-                                value={
-                                    data?.bottomText || "ウクライナに栄光あれ"
-                                }
+                                value={data?.bottomText || ""}
                                 inputRef={bottomText}
                                 placeholder="Enter bottom text"
                                 maxLength={20}
@@ -124,7 +127,7 @@ const Settings = () => {
                         name="Dance floor"
                         children={
                             <ChooseInput
-                            text="Some text"
+                                text={data?.danceFloor || ""}
                                 onClick={() => setDanceFloorVisibility(true)}
                             />
                         }
