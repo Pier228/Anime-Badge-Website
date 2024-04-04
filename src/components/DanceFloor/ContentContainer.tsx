@@ -1,8 +1,8 @@
-import IContentContainer from "@/interfaces/IContentContainer";
+import { IContentContainerFull } from "@/interfaces/IContentContainer";
 import styles from "@/styles/danceFloor/content-container.module.scss";
 import Image from "next/image";
 
-const ContentContainer = (props: IContentContainer) => {
+const ContentContainer = (props: IContentContainerFull) => {
     const handleChange = () => {
         props.onChange(props.name);
     };

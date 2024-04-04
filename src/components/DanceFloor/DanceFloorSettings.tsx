@@ -5,18 +5,24 @@ import ContentContainer from "./ContentContainer";
 import rounded_btn from "@/styles/buttons/rounded-button.module.scss";
 import submit_btn from "@/styles/buttons/submit-button.module.scss";
 import { useState } from "react";
+import IDanceFloorSettings from "@/interfaces/IDanceFloorSettings";
 
 const DanceFloorSettings = ({
     state,
     setState,
-}: {
-    state: boolean;
-    setState: (value: boolean) => void;
-}) => {
-    const [selectedId, setSelectedId] = useState<string | null>(null);
+    setSelectedDanceFloor,
+}: IDanceFloorSettings) => {
+    const [selectedName, setSelectedName] = useState<string | null>(null);
 
-    const handleChange = (id: string) => {
-        setSelectedId(id);
+    const handleChange = (name: string) => {
+        setSelectedName(name);
+    };
+
+    const setDanceFloor = () => {
+        if (selectedName) {
+            setSelectedDanceFloor(selectedName);
+        }
+        setState(false);
     };
 
     return (
@@ -39,7 +45,7 @@ const DanceFloorSettings = ({
                                 src="https://media3.giphy.com/media/4ilFRqgbzbx4c/200.gif"
                                 name={index.toString()}
                                 onChange={handleChange}
-                                selectedName={selectedId}
+                                selectedName={selectedName}
                                 key={index}
                             />
                         ))}
@@ -49,7 +55,7 @@ const DanceFloorSettings = ({
                             submit_btn.submit_btn +
                             ` ${styles.submit_btn_position}`
                         }
-                        onClick={() => setState(false)}
+                        onClick={setDanceFloor}
                     >
                         Choose image
                     </button>

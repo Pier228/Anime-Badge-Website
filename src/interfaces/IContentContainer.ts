@@ -1,6 +1,9 @@
-export default interface IContentContainer {
+export interface IContentContainer {
     src: string;
     name: string;
+}
+
+export interface IContentContainerFull extends IContentContainer {
     selectedName: string | null;
-    onChange: (id: string) => void;
+    onChange: (name: string) => void;
 }

@@ -17,6 +17,7 @@ import LinkButton from "@/components/Buttons/LinkButton";
 import useWeatherData from "@/hooks/useWeatherData";
 import Cursor from "@/components/Cursor/Cursor";
 import DanceFloorSettings from "@/components/DanceFloor/DanceFloorSettings";
+import ChooseInput from "@/components/Buttons/ChooseInput";
 
 const Settings = () => {
     const {
@@ -29,6 +30,9 @@ const Settings = () => {
     const [alertMessage, setAlertMessage] = useState("");
     const [alertColor, setAlertColor] = useState("");
     const [danceFloor, setDanceFloorVisibility] = useState(false);
+    const [selectedDanceFloor, setSelectedDanceFloor] = useState<string | null>(
+        null
+    );
     const data = useData();
     const weatherData = useWeatherData();
 
@@ -45,6 +49,9 @@ const Settings = () => {
                 bottomText: bottomText.current?.value,
                 background: background.current?.checked,
                 cursorEffect: cursorEffect.current?.checked,
+                danceFloor: selectedDanceFloor
+                    ? selectedDanceFloor
+                    : data?.danceFloor,
             });
             setAlertColor("green");
             setAlertMessage("Settings successfully applied!");
@@ -59,6 +66,7 @@ const Settings = () => {
     return (
         <>
             <DanceFloorSettings
+                setSelectedDanceFloor={setSelectedDanceFloor}
                 state={danceFloor}
                 setState={setDanceFloorVisibility}
             />
@@ -93,13 +101,20 @@ const Settings = () => {
                 <main className={styles.main}>
                     <Parameter
                         name="Character"
-                        children={<p>Monkey D. Luffy</p>}
+                        children={
+                            <ChooseInput
+                                text={data?.character || ""}
+                                onClick={() =>
+                                    console.warn("This function in development")
+                                }
+                            />
+                        }
                     />
                     <Parameter
                         name="Nickname"
                         children={
                             <InputField
-                                value={data?.nickname || "Name"}
+                                value={data?.nickname || ""}
                                 inputRef={nickname}
                                 placeholder="Enter Nickname"
                                 maxLength={16}
@@ -110,9 +125,7 @@ const Settings = () => {
                         name="Bottom text"
                         children={
                             <InputField
-                                value={
-                                    data?.bottomText || "ウクライナに栄光あれ"
-                                }
+                                value={data?.bottomText || ""}
                                 inputRef={bottomText}
                                 placeholder="Enter bottom text"
                                 maxLength={20}
@@ -122,9 +135,12 @@ const Settings = () => {
                     <Parameter
                         name="Dance floor"
                         children={
-                            <p onClick={() => setDanceFloorVisibility(true)}>
-                                Choose
-                            </p>
+                            <ChooseInput
+                                text={
+                                    selectedDanceFloor || data?.danceFloor || ""
+                                }
+                                onClick={() => setDanceFloorVisibility(true)}
+                            />
                         }
                     />
                     <Parameter
