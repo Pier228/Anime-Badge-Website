@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const ContentContainer = (props: IContentContainerFull) => {
     const handleChange = () => {
-        props.onChange(props.name);
+        props.onChange({ name: props.name, src: props.src });
     };
 
     return (

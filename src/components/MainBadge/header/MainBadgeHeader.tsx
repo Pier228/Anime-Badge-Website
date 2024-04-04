@@ -10,7 +10,7 @@ const Header = () => {
         return (
         <header className={styles.header}>
             <Clock />
-            <NickName name={data?.nickname || 'Name'} />
+            <NickName name={data?.nickname || ''} />
             <QRCode />
         </header>
     );

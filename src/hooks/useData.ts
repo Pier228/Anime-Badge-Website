@@ -1,5 +1,5 @@
 import type IData from "@/interfaces/IData";
-import Caching from "@/services/ChachingService";
+import Caching from "@/services/CachingService";
 import { useEffect, useState } from "react";
 
 const useData = (): IData | null => {

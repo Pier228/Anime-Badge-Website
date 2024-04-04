@@ -3,6 +3,7 @@ import { Noto_Sans_Javanese } from "next/font/google";
 import Image from "next/image";
 import ToolBar from "./TaskBar";
 import useData from "@/hooks/useData";
+import Placeholder from "@/components/Placeholder/Placeholder";
 
 const footer_title = Noto_Sans_Javanese({
     subsets: ["javanese"],
@@ -23,7 +24,7 @@ const MainBadgeFooter = () => {
             />
             <ToolBar />
             <div className={footer_title.className + " " + styles.footer_title}>
-                {data?.bottomText || "ウクライナに栄光あれ"}
+                {data?.bottomText || <Placeholder width="12rem" height={5} />}
             </div>
         </footer>
     );
