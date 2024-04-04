@@ -30,6 +30,9 @@ const Settings = () => {
     const [alertMessage, setAlertMessage] = useState("");
     const [alertColor, setAlertColor] = useState("");
     const [danceFloor, setDanceFloorVisibility] = useState(false);
+    const [selectedDanceFloor, setSelectedDanceFloor] = useState<string | null>(
+        null
+    );
     const data = useData();
     const weatherData = useWeatherData();
 
@@ -46,6 +49,9 @@ const Settings = () => {
                 bottomText: bottomText.current?.value,
                 background: background.current?.checked,
                 cursorEffect: cursorEffect.current?.checked,
+                danceFloor: selectedDanceFloor
+                    ? selectedDanceFloor
+                    : data?.danceFloor,
             });
             setAlertColor("green");
             setAlertMessage("Settings successfully applied!");
@@ -60,6 +66,7 @@ const Settings = () => {
     return (
         <>
             <DanceFloorSettings
+                setSelectedDanceFloor={setSelectedDanceFloor}
                 state={danceFloor}
                 setState={setDanceFloorVisibility}
             />
@@ -97,7 +104,9 @@ const Settings = () => {
                         children={
                             <ChooseInput
                                 text={data?.character || ""}
-                                onClick={() => console.warn('This function in development')}
+                                onClick={() =>
+                                    console.warn("This function in development")
+                                }
                             />
                         }
                     />
@@ -127,7 +136,9 @@ const Settings = () => {
                         name="Dance floor"
                         children={
                             <ChooseInput
-                                text={data?.danceFloor || ""}
+                                text={
+                                    selectedDanceFloor || data?.danceFloor || ""
+                                }
                                 onClick={() => setDanceFloorVisibility(true)}
                             />
                         }
