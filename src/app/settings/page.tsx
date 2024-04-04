@@ -16,6 +16,7 @@ import useData from "@/hooks/useData";
 import LinkButton from "@/components/Buttons/LinkButton";
 import useWeatherData from "@/hooks/useWeatherData";
 import Cursor from "@/components/Cursor/Cursor";
+import DanceFloorSettings from "@/components/DanceFloor/DanceFloorSettings";
 
 const Settings = () => {
     const {
@@ -27,6 +28,7 @@ const Settings = () => {
     const [alertVisibility, setAlertVisibility] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const [alertColor, setAlertColor] = useState("");
+    const [danceFloor, setDanceFloorVisibility] = useState(false);
     const data = useData();
     const weatherData = useWeatherData();
 
@@ -56,6 +58,10 @@ const Settings = () => {
 
     return (
         <>
+            <DanceFloorSettings
+                state={danceFloor}
+                setState={setDanceFloorVisibility}
+            />
             <Cursor cursorEffectVisible={isCursorEffect} />
             {isBackgroundVisible && <Background />}
             {alertVisibility && (
@@ -113,7 +119,14 @@ const Settings = () => {
                             />
                         }
                     />
-                    <Parameter name="Dance floor" children={<p>Choose</p>} />
+                    <Parameter
+                        name="Dance floor"
+                        children={
+                            <p onClick={() => setDanceFloorVisibility(true)}>
+                                Choose
+                            </p>
+                        }
+                    />
                     <Parameter
                         name="Background"
                         children={

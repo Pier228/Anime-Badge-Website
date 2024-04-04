@@ -1,0 +1,51 @@
+@use "../globals.scss";
+
+.background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.486);
+    z-index: 3;
+}
+
+.container {
+    border-radius: 15px;
+    position: absolute;
+    z-index: 4;
+    width: 70%;
+    height: 80%;
+    background-color: globals.$prime-bg;
+}
+
+.title {
+    text-align: center;
+}
+
+.images_container {
+    margin-top: 1rem;
+    justify-content: space-between;
+    padding: 0 2rem;
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    height: 70%;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: globals.$prime-text;
+        border-radius: 15px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: globals.$prime-text-light;
+        border-radius: 15px;
+    }
+}
+
+.submit_btn_position {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
