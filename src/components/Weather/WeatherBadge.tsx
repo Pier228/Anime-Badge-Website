@@ -1,10 +1,10 @@
 import styles from "@/styles/weather/weather.module.scss";
 import Image from "next/image";
-import loader from "@/styles/loader/loader.module.scss";
 import useWeatherData from "@/hooks/useWeatherData";
+import Loader from "../Loader/Loader";
 
 const WeatherBadge = () => {
-    const data = useWeatherData();    
+    const data = useWeatherData();
 
     return data ? (
         <div className={styles.container}>
@@ -42,9 +42,7 @@ const WeatherBadge = () => {
             </div>
         </div>
     ) : (
-        <div className={loader.loader_badge_container}>
-            <span className={loader.loader} />
-        </div>
+        <Loader />
     );
 };
 

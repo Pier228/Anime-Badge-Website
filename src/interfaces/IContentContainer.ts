@@ -5,5 +5,5 @@ export interface IContentContainer {
 
 export interface IContentContainerFull extends IContentContainer {
     selectedName: string | null;
-    onChange: (name: string) => void;
+    onChange: (name: IContentContainer) => void;
 }

@@ -6,16 +6,19 @@ import rounded_btn from "@/styles/buttons/rounded-button.module.scss";
 import submit_btn from "@/styles/buttons/submit-button.module.scss";
 import { useState } from "react";
 import IDanceFloorSettings from "@/interfaces/IDanceFloorSettings";
+import { IContentContainer } from "@/interfaces/IContentContainer";
 
 const DanceFloorSettings = ({
     state,
     setState,
     setSelectedDanceFloor,
 }: IDanceFloorSettings) => {
-    const [selectedName, setSelectedName] = useState<string | null>(null);
+    const [selectedName, setSelectedName] = useState<IContentContainer | null>(
+        null
+    );
 
-    const handleChange = (name: string) => {
-        setSelectedName(name);
+    const handleChange = (obj: IContentContainer) => {
+        setSelectedName(obj);
     };
 
     const setDanceFloor = () => {
@@ -45,7 +48,7 @@ const DanceFloorSettings = ({
                                 src="https://media3.giphy.com/media/4ilFRqgbzbx4c/200.gif"
                                 name={index.toString()}
                                 onChange={handleChange}
-                                selectedName={selectedName}
+                                selectedName={selectedName?.name || null}
                                 key={index}
                             />
                         ))}

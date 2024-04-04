@@ -1,7 +1,7 @@
-import styles from "@/styles/loader/loader.module.scss";
+import Loader from "@/components/Loader/Loader";
 
 const Loading = () => {
-    return <span className={styles.loader} />;
+    return <Loader />;
 };
 
 export default Loading;

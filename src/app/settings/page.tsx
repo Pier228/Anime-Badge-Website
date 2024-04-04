@@ -11,13 +11,14 @@ import ToggleButton from "@/components/Settings/ToggleButton";
 import InputField from "@/components/Settings/InputField";
 import Alert from "@/components/Alerts/Alert";
 import { useRef, useState } from "react";
-import Caching from "@/services/ChachingService";
+import Caching from "@/services/CachingService";
 import useData from "@/hooks/useData";
 import LinkButton from "@/components/Buttons/LinkButton";
 import useWeatherData from "@/hooks/useWeatherData";
 import Cursor from "@/components/Cursor/Cursor";
 import DanceFloorSettings from "@/components/DanceFloor/DanceFloorSettings";
 import ChooseInput from "@/components/Buttons/ChooseInput";
+import { IContentContainer } from "@/interfaces/IContentContainer";
 
 const Settings = () => {
     const {
@@ -30,7 +31,7 @@ const Settings = () => {
     const [alertMessage, setAlertMessage] = useState("");
     const [alertColor, setAlertColor] = useState("");
     const [danceFloor, setDanceFloorVisibility] = useState(false);
-    const [selectedDanceFloor, setSelectedDanceFloor] = useState<string | null>(
+    const [selectedDanceFloor, setSelectedDanceFloor] = useState<IContentContainer | null>(
         null
     );
     const data = useData();
@@ -137,7 +138,7 @@ const Settings = () => {
                         children={
                             <ChooseInput
                                 text={
-                                    selectedDanceFloor || data?.danceFloor || ""
+                                    selectedDanceFloor?.name || data?.danceFloor?.name|| ""
                                 }
                                 onClick={() => setDanceFloorVisibility(true)}
                             />
@@ -166,7 +167,7 @@ const Settings = () => {
                     <Parameter
                         name="Location"
                         children={
-                            <p>{weatherData?.location.name || "Choose"}</p>
+                            <p>{weatherData?.location.name || data?.location}</p>
                         }
                     />
                 </main>
