@@ -14,3 +14,21 @@
         background-color: globals.$secondary-text-50;
     }
 }
+
+.inputWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.chooseButton {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 0 1rem;
+    border: none;
+    background-color: transparent;
+    color: globals.$prime-text-light;
+    font-weight: 600;
+    cursor: pointer;
+}

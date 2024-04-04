@@ -17,6 +17,7 @@ import LinkButton from "@/components/Buttons/LinkButton";
 import useWeatherData from "@/hooks/useWeatherData";
 import Cursor from "@/components/Cursor/Cursor";
 import DanceFloorSettings from "@/components/DanceFloor/DanceFloorSettings";
+import ChooseInput from "@/components/Buttons/ChooseInput";
 
 const Settings = () => {
     const {
@@ -122,9 +123,10 @@ const Settings = () => {
                     <Parameter
                         name="Dance floor"
                         children={
-                            <p onClick={() => setDanceFloorVisibility(true)}>
-                                Choose
-                            </p>
+                            <ChooseInput
+                            text="Some text"
+                                onClick={() => setDanceFloorVisibility(true)}
+                            />
                         }
                     />
                     <Parameter
