@@ -28,6 +28,7 @@ const ContentContainer = (props: IContentContainerFull) => {
                 fill
                 alt={props.name}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                style={{objectFit:'cover'}}
             />
             <p className={styles.caption}>{props.name}</p>
         </label>

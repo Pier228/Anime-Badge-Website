@@ -12,9 +12,10 @@ const DanceFloor = () => {
                 <Image
                     alt={data?.danceFloor?.name}
                     src={data?.danceFloor?.src}
-                    height={220}
-                    width={200}
+                    height={215}
+                    width={300}
                     quality={100}
+                    style={{objectFit:'contain'}}
                 />
             ) : (
                 <Loader />
