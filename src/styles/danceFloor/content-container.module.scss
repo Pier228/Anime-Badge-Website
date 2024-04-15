@@ -7,6 +7,10 @@
     width: 10rem;
     height: 10rem;
     cursor: pointer;
+    text-align: center;
+    color: globals.$prime-text;
+    font-weight: bolder;
+    font-size: medium;
 
     input {
         width: 100%;
@@ -17,6 +21,11 @@
     }
 }
 
+.caption {
+    margin-top: 0.3rem;
+}
+
 .selected_container {
     border: 3px solid globals.$prime-text-light;
+    color: globals.$prime-text-light;
 }
