@@ -2,7 +2,7 @@ import danceFloorShema from "@/models/danceFloorShema";
 import connect from "@/utils/db";
 import { NextResponse } from "next/server";
 
-export const GET = async (request: Request) => {
+export const GET = async () => {
     try {
         await connect();
 
