@@ -4,9 +4,11 @@ import NickName from "../MainBadge/header/NickName";
 import ContentContainer from "./ContentContainer";
 import rounded_btn from "@/styles/buttons/rounded-button.module.scss";
 import submit_btn from "@/styles/buttons/submit-button.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import IDanceFloorSettings from "@/interfaces/IDanceFloorSettings";
 import { IContentContainer } from "@/interfaces/IContentContainer";
+import IDanceFloorCharacter from "@/interfaces/IDanceFloorCharacter";
+import Loader from "../Loader/Loader";
 
 const DanceFloorSettings = ({
     state,
@@ -16,6 +18,16 @@ const DanceFloorSettings = ({
     const [selectedName, setSelectedName] = useState<IContentContainer | null>(
         null
     );
+    const [danceFloorData, setDanceFloorData] = useState<
+        null | IDanceFloorCharacter[]
+    >(null);
+
+    useEffect(() => {
+        fetch(`/api/getDanceFloorData`)
+            .then((res) => res.json())
+            .then((json) => setDanceFloorData(json))
+            .catch((error) => console.error(error));
+    }, []);
 
     const handleChange = (obj: IContentContainer) => {
         setSelectedName(obj);
@@ -42,17 +54,29 @@ const DanceFloorSettings = ({
                     >
                         Close
                     </button>
-                    <div className={styles.images_container}>
-                        {Array.from({ length: 30 }).map((_, index) => (
-                            <ContentContainer
-                                src="https://media3.giphy.com/media/4ilFRqgbzbx4c/200.gif"
-                                name={index.toString()}
-                                onChange={handleChange}
-                                selectedName={selectedName?.name || null}
-                                key={index}
-                            />
-                        ))}
-                    </div>
+                    {danceFloorData ? (
+                        <div className={styles.images_container}>
+                            {danceFloorData.map(
+                                (
+                                    character: IDanceFloorCharacter,
+                                    index: number
+                                ) => (
+                                    <ContentContainer
+                                        src={character.src}
+                                        name={character.name}
+                                        onChange={handleChange}
+                                        selectedName={
+                                            selectedName?.name || null
+                                        }
+                                        key={index}
+                                    />
+                                )
+                            )}
+                        </div>
+                    ) : (
+                        <Loader />
+                    )}
+
                     <button
                         className={
                             submit_btn.submit_btn +
