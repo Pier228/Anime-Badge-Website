@@ -9,6 +9,7 @@ import IDanceFloorSettings from "@/interfaces/IDanceFloorSettings";
 import { IContentContainer } from "@/interfaces/IContentContainer";
 import IDanceFloorCharacter from "@/interfaces/IDanceFloorCharacter";
 import Loader from "../Loader/Loader";
+import containerStyles from "@/styles/danceFloor/content-container.module.scss";
 
 const DanceFloorSettings = ({
     state,
@@ -59,6 +60,7 @@ const DanceFloorSettings = ({
                     </button>
                     {danceFloorData ? (
                         <div className={styles.images_container}>
+                            <div className={containerStyles.container}></div>
                             {danceFloorData.map(
                                 (
                                     character: IDanceFloorCharacter,
