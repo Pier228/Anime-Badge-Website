@@ -36,6 +36,7 @@
     background-clip: text;
     -webkit-background-clip: text;
     animation: move-bg 12s infinite linear;
+    text-align: center;
 
     @media (prefers-reduced-motion: no-preference) {
         & {

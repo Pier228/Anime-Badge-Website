@@ -107,7 +107,7 @@ const Settings = () => {
                     alt="Katana"
                     className={badgeStyle.katana_img_top}
                 />
-                <header className={styles.header}>
+                <header>
                     <NickName name="Settings" />
                 </header>
                 <main className={styles.main}>
