@@ -9,6 +9,7 @@ const ChooseInput = (props: IChooseInput) => {
                 value={props.text}
                 readOnly
                 className={styles.input}
+                name={props.text}
             />
             <button onClick={props.onClick} className={styles.chooseButton}>
                 Choose
