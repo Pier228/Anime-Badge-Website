@@ -10,7 +10,7 @@ import Parameter from "@/components/Settings/Parameter";
 import ToggleButton from "@/components/Settings/ToggleButton";
 import InputField from "@/components/Settings/InputField";
 import Alert from "@/components/Alerts/Alert";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Caching from "@/services/CachingService";
 import useData from "@/hooks/useData";
 import LinkButton from "@/components/Buttons/LinkButton";
@@ -30,12 +30,15 @@ const Settings = () => {
     const [alertVisibility, setAlertVisibility] = useState(false);
     const [alertMessage, setAlertMessage] = useState("");
     const [alertColor, setAlertColor] = useState("");
-    const [danceFloor, setDanceFloorVisibility] = useState(false);
-    const [selectedDanceFloor, setSelectedDanceFloor] = useState<IContentContainer | null>(
-        null
-    );
+    const [danceFloorVisibility, setDanceFloorVisibility] = useState(false);
+    const [selectedDanceFloor, setSelectedDanceFloor] =
+        useState<IContentContainer | null>(null);
     const data = useData();
     const weatherData = useWeatherData();
+
+    useEffect(() => {
+        data?.danceFloor && setSelectedDanceFloor(data?.danceFloor);
+    }, [data?.danceFloor?.name, data?.danceFloor?.src]);
 
     const nickname = useRef<HTMLInputElement>(null);
     const bottomText = useRef<HTMLInputElement>(null);
@@ -68,8 +71,9 @@ const Settings = () => {
         <>
             <DanceFloorSettings
                 setSelectedDanceFloor={setSelectedDanceFloor}
-                state={danceFloor}
+                state={danceFloorVisibility}
                 setState={setDanceFloorVisibility}
+                selectedImageName={selectedDanceFloor}
             />
             <Cursor cursorEffectVisible={isCursorEffect} />
             {isBackgroundVisible && <Background />}
@@ -138,7 +142,9 @@ const Settings = () => {
                         children={
                             <ChooseInput
                                 text={
-                                    selectedDanceFloor?.name || data?.danceFloor?.name|| ""
+                                    selectedDanceFloor?.name ||
+                                    data?.danceFloor?.name ||
+                                    ""
                                 }
                                 onClick={() => setDanceFloorVisibility(true)}
                             />
@@ -167,7 +173,9 @@ const Settings = () => {
                     <Parameter
                         name="Location"
                         children={
-                            <p>{weatherData?.location.name || data?.location}</p>
+                            <p>
+                                {weatherData?.location.name || data?.location}
+                            </p>
                         }
                     />
                 </main>
