@@ -14,6 +14,7 @@ const DanceFloorSettings = ({
     state,
     setState,
     setSelectedDanceFloor,
+    selectedImageName,
 }: IDanceFloorSettings) => {
     const [selectedName, setSelectedName] = useState<IContentContainer | null>(
         null
@@ -28,6 +29,8 @@ const DanceFloorSettings = ({
             .then((json) => setDanceFloorData(json))
             .catch((error) => console.error(error));
     }, []);
+
+    useEffect(() => setSelectedName(selectedImageName), [selectedImageName]);
 
     const handleChange = (obj: IContentContainer) => {
         setSelectedName(obj);
