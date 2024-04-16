@@ -49,3 +49,11 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+.add_button_container {
+    width: 10rem;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

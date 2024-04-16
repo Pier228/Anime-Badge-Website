@@ -1,0 +1,18 @@
+@use "../globals.scss";
+
+.button {
+    border-radius: 50%;
+    cursor: pointer;
+    width: 6rem;
+    height: 6rem;
+    background-color: transparent;
+    font-size: 3rem;
+    border: solid 3px globals.$secondary-text-50;
+    color: globals.$secondary-text-50;
+    transition: 0.3s;
+
+    &:hover {
+        border-color: globals.$prime-text-light;
+        color: globals.$prime-text-light;
+    }
+}

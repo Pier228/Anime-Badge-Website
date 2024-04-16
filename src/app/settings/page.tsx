@@ -19,22 +19,29 @@ import Cursor from "@/components/Cursor/Cursor";
 import DanceFloorSettings from "@/components/DanceFloor/DanceFloorSettings";
 import ChooseInput from "@/components/Buttons/ChooseInput";
 import { IContentContainer } from "@/interfaces/IContentContainer";
+import useAlert from "@/hooks/useAlert";
 
 const Settings = () => {
+    const data = useData();
+    const weatherData = useWeatherData();
     const {
         isBackgroundVisible,
         isCursorEffect,
         changeBackgroundVisibility,
         changeCursorVisibility,
     } = useToggleButton();
-    const [alertVisibility, setAlertVisibility] = useState(false);
-    const [alertMessage, setAlertMessage] = useState("");
-    const [alertColor, setAlertColor] = useState("");
+    const {
+        alertVisibility,
+        alertMessage,
+        alertColor,
+        setAlertVisibility,
+        setAlertMessage,
+        setAlertColor,
+    } = useAlert();
+
     const [danceFloorVisibility, setDanceFloorVisibility] = useState(false);
     const [selectedDanceFloor, setSelectedDanceFloor] =
         useState<IContentContainer | null>(null);
-    const data = useData();
-    const weatherData = useWeatherData();
 
     useEffect(() => {
         data?.danceFloor && setSelectedDanceFloor(data?.danceFloor);
@@ -100,7 +107,7 @@ const Settings = () => {
                     alt="Katana"
                     className={badgeStyle.katana_img_top}
                 />
-                <header className={styles.header}>
+                <header>
                     <NickName name="Settings" />
                 </header>
                 <main className={styles.main}>

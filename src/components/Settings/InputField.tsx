@@ -23,6 +23,8 @@ const InputField = (props: IInputField) => {
             maxLength={props.maxLength}
             onChange={changeValue}
             placeholder={props.placeholder}
+            name={props.value}
+            autoComplete="on"
         />
     );
 };
