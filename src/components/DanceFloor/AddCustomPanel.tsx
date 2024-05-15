@@ -6,10 +6,30 @@ import { useRef } from "react";
 import NickName from "../MainBadge/header/NickName";
 import Parameter from "../Settings/Parameter";
 import IAddCustomPanel from "@/interfaces/IAddCustomPanel";
+import Caching from "@/services/CachingService";
 
 const AddCustomPanel = (props: IAddCustomPanel) => {
-    const name = useRef<HTMLInputElement>(null);
     const source = useRef<HTMLInputElement>(null);
+
+    const addImage = () => {
+        if (
+            source.current!.value.length < 5 ||
+            source.current?.value.slice(0, 4) !== "http"
+        ) {
+            source.current!.style.borderColor = "rgb(220 38 38)";
+        } else {
+            let newData = [
+                ...props.customImages,
+                {
+                    name: `Custom Image ${++props.customImages.length}`,
+                    src: source.current!.value,
+                },
+            ];
+            props.addCustomImages(newData);
+            Caching.cacheData("danceFloorCustom", newData);
+            props.setVisibility(false);
+        }
+    };
 
     return (
         <>
@@ -21,24 +41,13 @@ const AddCustomPanel = (props: IAddCustomPanel) => {
                 <NickName name="Add custom image" />
                 <div className={styles.main}>
                     <Parameter
-                        name="Enter name"
-                        children={
-                            <InputField
-                                value=""
-                                placeholder="Name"
-                                inputRef={name}
-                                maxLength={16}
-                            />
-                        }
-                    />
-                    <Parameter
                         name="Enter source"
                         children={
                             <InputField
                                 value=""
                                 placeholder="Source"
                                 inputRef={source}
-                                maxLength={100}
+                                maxLength={500}
                             />
                         }
                     />
@@ -47,7 +56,7 @@ const AddCustomPanel = (props: IAddCustomPanel) => {
                     className={
                         submit_btn.submit_btn + ` ${styles.submit_btn_position}`
                     }
-                    onClick={() => console.warn("This function in development")}
+                    onClick={() => addImage()}
                 >
                     Add image
                 </button>

@@ -1,10 +1,23 @@
+"use client";
 import styles from "@/styles/weather/weather.module.scss";
 import Image from "next/image";
 import useWeatherData from "@/hooks/useWeatherData";
 import Loader from "../Loader/Loader";
+import Caching from "@/services/CachingService";
+import { useEffect } from "react";
 
 const WeatherBadge = () => {
     const data = useWeatherData();
+
+    useEffect(() => {
+        (async () => {
+            let cachedData = await Caching.getData("anime-badge-data");
+            if (cachedData) {
+                cachedData.location = data?.location.name;
+                Caching.cacheData("anime-badge-data", cachedData);
+            }
+        })();
+    }, [data]);
 
     return data ? (
         <div className={styles.container}>
