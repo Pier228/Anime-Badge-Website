@@ -11,6 +11,7 @@ import IDanceFloorCharacter from "@/interfaces/IDanceFloorCharacter";
 import Loader from "../Loader/Loader";
 import CircleButton from "../Buttons/CircleButton";
 import AddCustomPanel from "./AddCustomPanel";
+import Caching from "@/services/CachingService";
 
 const DanceFloorSettings = ({
     state,
@@ -34,6 +35,17 @@ const DanceFloorSettings = ({
             .then((res) => res.json())
             .then((json) => setDanceFloorData(json))
             .catch((error) => console.error(error));
+    }, []);
+
+    useEffect(() => {
+        const fetchCustomImages = async () => {
+            let customImages = await Caching.getData("danceFloorCustom");
+            if (customImages) {
+                setCustomImages(customImages);
+            }
+        };
+
+        fetchCustomImages();
     }, []);
 
     useEffect(() => setSelectedName(selectedImageName), [selectedImageName]);

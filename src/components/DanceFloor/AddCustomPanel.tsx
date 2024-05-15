@@ -6,6 +6,7 @@ import { useRef } from "react";
 import NickName from "../MainBadge/header/NickName";
 import Parameter from "../Settings/Parameter";
 import IAddCustomPanel from "@/interfaces/IAddCustomPanel";
+import Caching from "@/services/CachingService";
 
 const AddCustomPanel = (props: IAddCustomPanel) => {
     const source = useRef<HTMLInputElement>(null);
@@ -17,13 +18,15 @@ const AddCustomPanel = (props: IAddCustomPanel) => {
         ) {
             source.current!.style.borderColor = "rgb(220 38 38)";
         } else {
-            props.addCustomImages([
-                ...props?.customImages,
+            let newData = [
+                ...props.customImages,
                 {
                     name: `Custom Image ${++props.customImages.length}`,
                     src: source.current!.value,
                 },
-            ]);
+            ];
+            props.addCustomImages(newData);
+            Caching.cacheData("danceFloorCustom", newData);
             props.setVisibility(false);
         }
     };
