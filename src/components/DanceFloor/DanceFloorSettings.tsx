@@ -25,9 +25,12 @@ const DanceFloorSettings = ({
         null | IDanceFloorCharacter[]
     >(null);
     const [isAddPanelVisible, setAddPanelVisibility] = useState(false);
+    const [customImages, setCustomImages] = useState<IContentContainer[] | []>(
+        []
+    );
 
     useEffect(() => {
-        fetch(`/api/getDanceFloorData`)
+        fetch(`/api/getDanceFloorData`, { next: { revalidate: 10800 } })
             .then((res) => res.json())
             .then((json) => setDanceFloorData(json))
             .catch((error) => console.error(error));
@@ -55,7 +58,11 @@ const DanceFloorSettings = ({
                 />
                 <div className={styles.container}>
                     {isAddPanelVisible && (
-                        <AddCustomPanel setVisibility={setAddPanelVisibility} />
+                        <AddCustomPanel
+                            setVisibility={setAddPanelVisibility}
+                            addCustomImages={setCustomImages}
+                            customImages={customImages}
+                        />
                     )}
                     <div className={styles.title}>
                         <NickName name="Dance Floor" />
@@ -74,6 +81,20 @@ const DanceFloorSettings = ({
                                     children={<span>+</span>}
                                 />
                             </div>
+                            {customImages.map(
+                                (character, index) =>
+                                    character && (
+                                        <ContentContainer
+                                            src={character.src}
+                                            name={character.name}
+                                            onChange={handleChange}
+                                            selectedName={
+                                                selectedName?.name || null
+                                            }
+                                            key={index}
+                                        />
+                                    )
+                            )}
                             {danceFloorData.map(
                                 (
                                     character: IDanceFloorCharacter,
