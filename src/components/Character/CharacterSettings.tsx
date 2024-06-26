@@ -37,7 +37,7 @@ const CharacterSettings = ({
     fetch(`https://graphql.anilist.co`, {
       method: "POST",
       body: JSON.stringify({
-        query: `query{characters:Page(page:${page},perPage:49){characters(sort:SEARCH_MATCH){name{full} image{large} description age gender}}}`,
+        query: `query{characters:Page(page:${page},perPage:49){characters(sort:SEARCH_MATCH){name{full} image{large} description(asHtml:true) age gender}}}`,
         variables: { type: "CHARACTERS" },
       }),
       headers: {

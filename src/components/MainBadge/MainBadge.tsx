@@ -4,7 +4,6 @@ import MainBadgeHeader from "./header/MainBadgeHeader";
 import MainContainer from "./main/MainContainer";
 import styles from "@/styles/mainBadge/main-badge.module.scss";
 import Image from "next/image";
-import defaultData from "@/interfaces/DefaultData";
 
 const Main = () => {
   const data = useData();
@@ -20,9 +19,9 @@ const Main = () => {
       />
       <MainBadgeHeader nickname={data?.nickname || ''} />
       <MainContainer
-        data={data?.character?.data || defaultData.character.data}
-        name={data?.character?.name || defaultData.character.name}
-        src={data?.character?.src || defaultData.character.src}
+        data={data?.character?.data}
+        name={data?.character?.name}
+        src={data?.character?.src}
       />
       <MainBadgeFooter bottomText={data?.bottomText} />
     </div>

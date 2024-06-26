@@ -9,6 +9,7 @@
     font-weight: 600;
     font-size: large;
     outline: none;
+    width: 18rem;
 
     &:focus {
         background-color: globals.$secondary-text-50;
@@ -18,6 +19,10 @@
 .inputWrapper {
     position: relative;
     display: inline-block;
+
+    input{
+        padding-right: 5rem;
+    }
 }
 
 .chooseButton {

@@ -1,79 +1,120 @@
 @use "../globals.scss";
 
 .container {
-    display: flex;
-    padding: 2rem 0rem 3rem 0rem;
+  display: flex;
+  padding: 2rem 0rem 3rem 0rem;
 }
 
 .avatar {
-    position: relative;
-    margin-left: 1.2rem;
+  position: relative;
+  margin-left: 1.2rem;
 }
 
 %corner {
-    position: absolute;
+  position: absolute;
 }
 
 .corner_right_top {
-    @extend %corner;
-    top: -1rem;
-    right: -1rem;
+  @extend %corner;
+  top: -1rem;
+  right: -1rem;
 }
 
 .corner_left_top {
-    @extend %corner;
-    top: -1rem;
-    left: -1rem;
-    transform: rotate(-90deg);
+  @extend %corner;
+  top: -1rem;
+  left: -1rem;
+  transform: rotate(-90deg);
 }
 
 .corner_left_bottom {
-    @extend %corner;
-    bottom: -1rem;
-    left: -1rem;
-    transform: rotate(180deg);
+  @extend %corner;
+  bottom: -1rem;
+  left: -1rem;
+  transform: rotate(180deg);
 }
 
 .corner_right_bottom {
-    @extend %corner;
-    bottom: -1rem;
-    right: -1rem;
-    transform: rotate(90deg);
+  @extend %corner;
+  bottom: -1rem;
+  right: -1rem;
+  transform: rotate(90deg);
+}
+
+%styled_text {
+  font-weight: 600;
+  $bg-size: 400%;
+
+  background: linear-gradient(
+      90deg,
+      globals.$prime-text-light,
+      globals.$prime-text,
+      globals.$prime-text-light
+    )
+    0 0 / ($bg-size 100%);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: move-bg 15s infinite linear;
+
+  @media (prefers-reduced-motion: no-preference) {
+    & {
+      animation: move-bg 15s linear infinite;
+    }
+    @keyframes move-bg {
+      to {
+        background-position: $bg-size 0;
+      }
+    }
+  }
 }
 
 .info_container {
-    margin-left: 2rem;
+  overflow: hidden;
+  margin-left: 2rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 10;
+  max-height: 18.4rem;
+  text-align: justify;
 
-    p {
-        margin-top: 1rem;
-    }
+  span {
+    margin-left: 0.5rem;
+    @extend %styled_text;
+  }
+}
 
-    span {
-        font-weight: 600;
-        margin-left: 0.5rem;
-        $bg-size: 400%;
+.avatar_placeholder {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        background: linear-gradient(
-                90deg,
-                globals.$prime-text-light,
-                globals.$prime-text,
-                globals.$prime-text-light
-            )
-            0 0 / ($bg-size 100%);
-        color: transparent;
-        background-clip: text;
-        -webkit-background-clip: text;
-        animation: move-bg 15s infinite linear;
+.description_placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        @media (prefers-reduced-motion: no-preference) {
-            & {
-                animation: move-bg 15s linear infinite;
-            }
-            @keyframes move-bg {
-                to {
-                    background-position: $bg-size 0;
-                }
-            }
-        }
-    }
+.description {
+  strong {
+    color: globals.$secondary-text-50;
+  }
+
+  a {
+    pointer-events: none;
+    color: transparent;
+    text-decoration: none;
+  }
+
+  p {
+    @extend %styled_text;
+    cursor: text;
+    margin: 0;
+  }
 }
