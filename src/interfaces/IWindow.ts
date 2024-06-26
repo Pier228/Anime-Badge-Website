@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import IDanceFloorCharacter from "./IDanceFloorCharacter";
-import ICharacter from "./ICharacter";
+import {ICharacter} from "./ICharacter";
 
 export default interface IWindow {
   setState: (value: boolean) => void;
