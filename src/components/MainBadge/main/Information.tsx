@@ -11,10 +11,7 @@ const Information = (props: IProfile) => {
                 Age: <span>{props.age}</span>
             </p>
             <p>
-                Birthday: <span>{props.birthday}</span>
-            </p>
-            <p>
-                Occupations: <span>{props.occupation}</span>
+                Description: <span>{props.description}</span>
             </p>
         </div>
     );

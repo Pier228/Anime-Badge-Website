@@ -20,6 +20,7 @@ import DanceFloorSettings from "@/components/DanceFloor/DanceFloorSettings";
 import ChooseInput from "@/components/Buttons/ChooseInput";
 import { IContentContainer } from "@/interfaces/IContentContainer";
 import useAlert from "@/hooks/useAlert";
+import CharacterSettings from "@/components/Character/CharacterSettings";
 
 const Settings = () => {
   const data = useData();
@@ -39,13 +40,18 @@ const Settings = () => {
     setAlertColor,
   } = useAlert();
 
+  const [characterSettingsVisibility, setCharacterSettingsVisibility] =
+    useState(false);
+  const [selectedCharacter, setSelectedCharacter] =
+    useState<IContentContainer | null>(null);
   const [danceFloorVisibility, setDanceFloorVisibility] = useState(false);
   const [selectedDanceFloor, setSelectedDanceFloor] =
     useState<IContentContainer | null>(null);
 
   useEffect(() => {
     data?.danceFloor && setSelectedDanceFloor(data?.danceFloor);
-  }, [data?.danceFloor?.name, data?.danceFloor?.src]);
+    data?.character && setSelectedCharacter(data?.character);
+  }, [data]);
 
   const nickname = useRef<HTMLInputElement>(null);
   const bottomText = useRef<HTMLInputElement>(null);
@@ -61,6 +67,7 @@ const Settings = () => {
         background: background.current?.checked,
         cursorEffect: cursorEffect.current?.checked,
         danceFloor: selectedDanceFloor ? selectedDanceFloor : data?.danceFloor,
+        character: selectedCharacter ? selectedCharacter : data?.character,
       });
       setAlertColor("green");
       setAlertMessage("Settings successfully applied!");
@@ -74,6 +81,12 @@ const Settings = () => {
 
   return (
     <>
+      <CharacterSettings
+        state={characterSettingsVisibility}
+        setState={setCharacterSettingsVisibility}
+        selectedObject={selectedCharacter}
+        setSelectedObject={setSelectedCharacter}
+      />
       <DanceFloorSettings
         setSelectedObject={setSelectedDanceFloor}
         state={danceFloorVisibility}
@@ -113,8 +126,9 @@ const Settings = () => {
             name="Character"
             children={
               <ChooseInput
-                text={data?.character || ""}
-                onClick={() => console.warn("This function in development")}
+                text={selectedCharacter?.name || data?.character?.name || ""}
+                onClick={() => setCharacterSettingsVisibility(true)}
+                placeholder="Loading..."
               />
             }
           />
@@ -146,6 +160,7 @@ const Settings = () => {
               <ChooseInput
                 text={selectedDanceFloor?.name || data?.danceFloor?.name || ""}
                 onClick={() => setDanceFloorVisibility(true)}
+                placeholder="Loading..."
               />
             }
           />
