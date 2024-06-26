@@ -1,6 +1,7 @@
 import Loader from "@/components/Loader/Loader";
 import IProfile from "@/interfaces/IProfile";
 import styles from "@/styles/mainBadge/main-badge-content.module.scss";
+import loader_styles from "@/styles/loader/loader.module.scss"
 
 const Information = ({ name, age, description, gender }: IProfile) => {
   return (
@@ -31,7 +32,7 @@ const Information = ({ name, age, description, gender }: IProfile) => {
         )}
       </div>
       {!name && (
-        <div className={styles.description_placeholder}>
+        <div className={loader_styles.wrapper}>
           <Loader />
         </div>
       )}
