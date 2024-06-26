@@ -2,7 +2,7 @@ export interface ICharacter {
   name: { full: string };
   image: { large: string };
   description?: string;
-  age?: string | Number;
+  age?: string | number;
   gender?: string;
 }
 

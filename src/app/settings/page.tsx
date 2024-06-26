@@ -171,6 +171,7 @@ const Settings = () => {
                 ref={background}
                 isChecked={isBackgroundVisible}
                 changeStatus={changeBackgroundVisibility}
+                name="Background toggle button"
               />
             }
           />
@@ -181,6 +182,7 @@ const Settings = () => {
                 ref={cursorEffect}
                 isChecked={isCursorEffect}
                 changeStatus={changeCursorVisibility}
+                name="Cursor effect toggle button"
               />
             }
           />

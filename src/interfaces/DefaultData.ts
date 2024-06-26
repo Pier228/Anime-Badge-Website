@@ -5,7 +5,7 @@ const defaultData = {
     data: {
       image: { large: "/images/avatar.jpg" },
       description:
-        "Pirate Captain, Emperor, Senior Captain of the Grand Fleet, Prisoner (former), Chore Boy (temporary, former), Bandit (former)",
+        "<p><strong>Description:</strong> Monkey D. Luffy, commonly known as 'Straw Hat Luffy' or simply 'Straw Hat', is the founder, captain, and strongest combatant of the increasingly infamous and powerful Straw Hat Pirates. He fearlessly pursues the legendary treasure of the late Gol D. Roger in order to become the new Pirate King and reach a further, untold dream (currently known to only his crew and closest friends). He believes that being the Pirate King means having the most freedom in the world.</p>",
       age: "19",
       gender: "Male",
       name: { full: "Monkey D. Luffy" },

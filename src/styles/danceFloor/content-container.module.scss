@@ -1,31 +1,35 @@
 @use "../globals.scss";
 
 .container {
-    position: relative;
-    border: 2px solid globals.$secondary-text-50;
-    background-color: transparent;
-    width: 10rem;
-    height: 10rem;
-    cursor: pointer;
-    text-align: center;
-    color: globals.$prime-text;
-    font-weight: bolder;
-    font-size: medium;
+  position: relative;
+  border: 2px solid globals.$secondary-text-50;
+  background-color: transparent;
+  width: 10rem;
+  height: 10rem;
+  cursor: pointer;
+  text-align: center;
+  color: globals.$prime-text;
+  font-weight: bolder;
+  font-size: medium;
 
-    input {
-        width: 100%;
-        height: 100%;
-        z-index: 10;
-        position: relative;
-        visibility: hidden;
-    }
+  input {
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    position: relative;
+    visibility: hidden;
+  }
 }
 
 .caption {
-    margin-top: 0.3rem;
+  margin-top: 0.3rem;
+  width: 10rem;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .selected_container {
-    border: 3px solid globals.$prime-text-light;
-    color: globals.$prime-text-light;
+  border: 3px solid globals.$prime-text-light;
+  color: globals.$prime-text-light;
 }

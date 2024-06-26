@@ -1,16 +1,17 @@
 import styles from "@/styles/mainBadge/main-badge-content.module.scss";
 import Avatar from "./Avatar";
 import Information from "./Information";
-import { ICharacterFull } from "@/interfaces/ICharacter";
+import { IMainContainer } from "@/interfaces/IMainContainer";
 
-const MainContainer = ({name, src, data}: ICharacterFull) => {
+const MainContainer = ({ name, src, data }: IMainContainer) => {
   return (
     <main className={styles.container}>
-      <Avatar />
+      <Avatar src={src} />
       <Information
-        name="Monkey D. Luffy"
-        age={19}
-        description="Pirate Captain, Emperor, Senior Captain of the Grand Fleet, Prisoner (former), Chore Boy (temporary, former), Bandit (former)"
+        name={name || ""}
+        age={data?.age || ""}
+        description={data?.description || ""}
+        gender={data?.gender}
       />
     </main>
   );

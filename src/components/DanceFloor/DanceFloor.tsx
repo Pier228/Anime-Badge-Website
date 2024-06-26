@@ -17,6 +17,7 @@ const DanceFloor = () => {
                     quality={100}
                     style={{objectFit:'contain'}}
                     unoptimized
+                    priority
                 />
             ) : (
                 <Loader />

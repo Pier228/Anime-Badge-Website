@@ -11,6 +11,7 @@ const ToggleButton = forwardRef(
                     type="checkbox"
                     checked={params.isChecked}
                     onChange={() => params.changeStatus()}
+                    name={params.name}
                 />
                 <span className={`${toggle_btn.slider} ${toggle_btn.round}`} />
             </label>
