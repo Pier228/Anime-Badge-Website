@@ -35,7 +35,6 @@ const CharacterSettings = ({
 
   useEffect(() => {
     fetch(`https://graphql.anilist.co`, {
-      next: { revalidate: 10800 },
       method: "POST",
       body: JSON.stringify({
         query: `query{characters:Page(page:${page},perPage:49){characters(sort:SEARCH_MATCH){name{full} image{large} description age gender}}}`,
