@@ -10,6 +10,7 @@ const ChooseInput = (props: IChooseInput) => {
                 readOnly
                 className={styles.input}
                 name={props.text}
+                placeholder={props.placeholder}
             />
             <button onClick={props.onClick} className={styles.chooseButton}>
                 Choose
