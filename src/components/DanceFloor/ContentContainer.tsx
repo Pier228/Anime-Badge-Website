@@ -1,14 +1,21 @@
+"use client"
 import { IContentContainerFull } from "@/interfaces/IContentContainer";
 import styles from "@/styles/danceFloor/content-container.module.scss";
 import Image from "next/image";
+import { useState } from "react";
+import DeleteButton from "../Buttons/DeleteButton";
 
 const ContentContainer = ({
   src,
   name,
-  selectedName,
+  selectedImg,
   onChange,
   data,
+  deletable,
+  deleteHandler,
 }: IContentContainerFull) => {
+  const [isDeleteButtonVisible, setDeleteButtonVisibility] = useState(false);
+
   const handleChange = () => {
     onChange({ name, src, ...(data && { data }) });
   };
@@ -17,14 +24,20 @@ const ContentContainer = ({
     <label
       className={
         styles.container +
-        ` ${selectedName === name && styles.selected_container}`
+        ` ${
+          selectedImg?.src === src &&
+          selectedImg.name === name &&
+          styles.selected_container
+        }`
       }
+      onMouseOver={() => setDeleteButtonVisibility(true)}
+      onMouseOut={() => setDeleteButtonVisibility(false)}
     >
       <input
         type="radio"
         name={name}
         onChange={handleChange}
-        checked={selectedName === name}
+        checked={selectedImg?.src === src && selectedImg.name === name}
       />
       <Image
         src={src}
@@ -35,6 +48,9 @@ const ContentContainer = ({
         unoptimized
       />
       <p className={styles.caption}>{name}</p>
+      {deletable && isDeleteButtonVisible && (
+        <DeleteButton onClick={deleteHandler ?? (() => {})} />
+      )}
     </label>
   );
 };

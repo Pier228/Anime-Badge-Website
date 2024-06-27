@@ -1,4 +1,6 @@
+import { ReactNode } from "react";
+
 export default interface ICircleButton {
-    children: any;
+    children: ReactNode;
     onClick: () => void;
 }
