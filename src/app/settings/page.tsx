@@ -21,6 +21,7 @@ import ChooseInput from "@/components/Buttons/ChooseInput";
 import { IContentContainer } from "@/interfaces/IContentContainer";
 import useAlert from "@/hooks/useAlert";
 import CharacterSettings from "@/components/Character/CharacterSettings";
+import TextButton from "@/components/Buttons/TextButton";
 
 const Settings = () => {
   const data = useData();
@@ -195,6 +196,13 @@ const Settings = () => {
           <button className={submit_btn.submit_btn} onClick={applyChanges}>
             Apply changes
           </button>
+          <TextButton
+            caption="Restore defaults"
+            onClick={() => {
+              Caching.setDefaultData();
+              window.location.reload();
+            }}
+          />
         </footer>
       </div>
     </>

@@ -1,0 +1,20 @@
+@use "../globals.scss";
+
+.button {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: transparent;
+  border: none;
+  color: globals.$secondary-text;
+  cursor: pointer;
+  transition: 0.5s;
+  font-size: medium;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+    filter: brightness(150%);
+  }
+}
