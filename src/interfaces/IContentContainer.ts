@@ -7,6 +7,8 @@ export interface IContentContainer {
 }
 
 export interface IContentContainerFull extends IContentContainer {
-  selectedName: string | null;
+  selectedImg: IContentContainer | null;
   onChange: (name: IContentContainer) => void;
+  deletable?: boolean;
+  deleteHandler?: () => void;
 }

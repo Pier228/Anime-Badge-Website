@@ -1,0 +1,16 @@
+@use "../globals.scss";
+
+.button {
+  cursor: pointer;
+  border: none;
+}
+
+.image {
+  position: absolute;
+  right: 0.3rem;
+  top: 0.3rem;
+
+  &:hover {
+    filter: brightness(200%);
+  }
+}

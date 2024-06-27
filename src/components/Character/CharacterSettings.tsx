@@ -29,10 +29,6 @@ const CharacterSettings = ({
     setState(false);
   };
 
-  const handleChange = (obj: IContentContainer) => {
-    setSelectedName(obj);
-  };
-
   const fetchCharacters = async (page: number) => {
     setIsLoading(true);
     const response = await fetch(`https://graphql.anilist.co`, {
@@ -91,8 +87,8 @@ const CharacterSettings = ({
                     <ContentContainer
                       src={character.image.large}
                       name={character.name.full}
-                      onChange={handleChange}
-                      selectedName={selectedName?.name || null}
+                      onChange={setSelectedName}
+                      selectedImg={selectedName || null}
                       data={character}
                     />
                   </div>
@@ -102,8 +98,8 @@ const CharacterSettings = ({
                   <ContentContainer
                     src={character.image.large}
                     name={character.name.full}
-                    onChange={handleChange}
-                    selectedName={selectedName?.name || null}
+                    onChange={setSelectedName}
+                    selectedImg={selectedName || null}
                     key={index}
                     data={character}
                   />

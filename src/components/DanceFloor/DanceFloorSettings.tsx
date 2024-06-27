@@ -9,6 +9,7 @@ import AddCustomPanel from "./AddCustomPanel";
 import Caching from "@/services/CachingService";
 import IDanceFloorSettings from "@/interfaces/IDanceFloorSettings";
 import Window from "../Window/Window";
+import deleteCustomImage from "@/utils/deleteCustomImage";
 
 const DanceFloorSettings = ({
   state,
@@ -16,7 +17,7 @@ const DanceFloorSettings = ({
   setSelectedObject,
   selectedObject,
 }: IDanceFloorSettings) => {
-  const [selectedName, setSelectedName] = useState<IContentContainer | null>(
+  const [selectedImage, setSelectedImage] = useState<IContentContainer | null>(
     null
   );
   const [danceFloorData, setDanceFloorData] = useState<
@@ -45,15 +46,11 @@ const DanceFloorSettings = ({
     fetchCustomImages();
   }, []);
 
-  useEffect(() => setSelectedName(selectedObject), [selectedObject]);
-
-  const handleChange = (obj: IContentContainer) => {
-    setSelectedName(obj);
-  };
+  useEffect(() => setSelectedImage(selectedObject), [selectedObject]);
 
   const setDanceFloor = () => {
-    if (selectedName) {
-      setSelectedObject(selectedName);
+    if (selectedImage) {
+      setSelectedObject(selectedImage);
     }
     setState(false);
   };
@@ -72,6 +69,7 @@ const DanceFloorSettings = ({
               setVisibility={setAddPanelVisibility}
               addCustomImages={setCustomImages}
               customImages={customImages}
+              danceFloorData={danceFloorData}
             />
           )
         }
@@ -89,9 +87,19 @@ const DanceFloorSettings = ({
                   <ContentContainer
                     src={character.src}
                     name={character.name}
-                    onChange={handleChange}
-                    selectedName={selectedName?.name || null}
+                    onChange={setSelectedImage}
+                    selectedImg={selectedImage || null}
                     key={index}
+                    deletable
+                    deleteHandler={() =>
+                      deleteCustomImage({
+                        customImages,
+                        srcToRemove: character.src,
+                        setNewData: setCustomImages,
+                        setSelectedObject,
+                        setSelectedName: setSelectedImage,
+                      })
+                    }
                   />
                 )
             )}
@@ -100,8 +108,8 @@ const DanceFloorSettings = ({
                 <ContentContainer
                   src={character.src}
                   name={character.name}
-                  onChange={handleChange}
-                  selectedName={selectedName?.name || null}
+                  onChange={setSelectedImage}
+                  selectedImg={selectedImage || null}
                   key={index}
                 />
               )
